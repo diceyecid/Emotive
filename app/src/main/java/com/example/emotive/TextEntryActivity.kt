@@ -1,5 +1,6 @@
 package com.example.emotive
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_text_entry.*
@@ -41,6 +42,11 @@ class TextEntryActivity : AppCompatActivity() {
 
         tePrevImage.setOnClickListener {
             finish()
+        }
+        doneButtonImage.setOnClickListener {
+            val intent = Intent (this,
+                MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
