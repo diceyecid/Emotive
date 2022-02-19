@@ -17,6 +17,36 @@ class MoodReportActivity : AppCompatActivity() {
             val intent = Intent (this,
                 TextEntryActivity::class.java)
 
+            intent.putExtra("face", "1")
+            startActivity(intent)
+        }
+
+        face2Image.setOnClickListener {
+            val intent = Intent (this,
+                TextEntryActivity::class.java)
+
+            intent.putExtra("face", "2")
+            startActivity(intent)
+        }
+        face3Image.setOnClickListener {
+            val intent = Intent (this,
+                TextEntryActivity::class.java)
+
+            intent.putExtra("face", "3")
+            startActivity(intent)
+        }
+        face4Image.setOnClickListener {
+            val intent = Intent (this,
+                TextEntryActivity::class.java)
+
+            intent.putExtra("face", "4")
+            startActivity(intent)
+        }
+        face5Image.setOnClickListener {
+            val intent = Intent (this,
+                TextEntryActivity::class.java)
+
+            intent.putExtra("face", "5")
             startActivity(intent)
         }
         /*
