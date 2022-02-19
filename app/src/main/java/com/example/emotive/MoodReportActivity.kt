@@ -3,26 +3,30 @@ package com.example.emotive
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_mood_report.*
 
-class MainActivity : AppCompatActivity() {
+class MoodReportActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_mood_report)
+        mrPrevImage.setOnClickListener {
+            finish()
+        }
 
-        triggerImage.setOnClickListener {
+        face1Image.setOnClickListener {
             val intent = Intent (this,
-                MoodReportActivity::class.java)
+                TextEntryActivity::class.java)
 
             startActivity(intent)
         }
         /*
-        triggerImag.setOnClickListener {
+        prevImage.setOnClickListener {
             val intent = Intent (this,
-                MoodReportActivity::class.java)
+                MainActivity::class.java)
 
             startActivity(intent)
         }
+
          */
     }
 }
