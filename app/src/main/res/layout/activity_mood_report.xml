@@ -7,7 +7,7 @@
     tools:context=".MoodReportActivity">
 
     <TextView
-        android:id="@+id/questionText"
+        android:id="@+id/surveyText"
         android:layout_width="0dp"
         android:layout_height="81dp"
         android:layout_marginStart="39dp"
