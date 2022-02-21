@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             tools:ignore="UselessParent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,6 +79,13 @@
                     app:srcCompat="@drawable/ic_calendar" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/moodCardContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 

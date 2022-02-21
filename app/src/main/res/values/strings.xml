@@ -13,4 +13,5 @@
     <!-- Strings for mood data activity-->
     <string name="title_activity_mood_data">MoodDataActivity</string>
     <string name="calendar">Date selector</string>
+    <string name="edit">Edit this selection</string>
 </resources>
