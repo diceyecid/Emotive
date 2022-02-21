@@ -15,7 +15,8 @@ import kotlin.collections.ArrayList
 
 class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 {
-    val cal = Calendar.getInstance()
+    // date selection
+    private val cal = Calendar.getInstance()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {

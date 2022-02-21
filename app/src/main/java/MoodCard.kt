@@ -1,1 +1,1 @@
-data class MoodCard( val mood: Int, val moodText: String )
+data class MoodCard(val moodValue: Int, val moodText: String )
