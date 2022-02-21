@@ -1,7 +1,7 @@
 package com.example.emotive
 
 import Mood
-import MoodContainerAdapter
+import MoodRecyclerViewAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.widget.DatePicker
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_mood_data.*
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -33,7 +32,7 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         // load recycler view of mood cards
         val samples = loadSampleData()
         moodCardContainer.layoutManager = LinearLayoutManager(this)
-        moodCardContainer.adapter = MoodContainerAdapter(samples)
+        moodCardContainer.adapter = MoodRecyclerViewAdapter(samples)
     }
 
     // create a list of sample mood data

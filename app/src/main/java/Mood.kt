@@ -1,9 +1,10 @@
 import android.media.Image
 import com.example.emotive.R
+import java.io.Serializable
 import java.util.*
 
 // this class is an abstract representation of mood data
-data class Mood( val value: Int, var text: String?, var imageList: ArrayList<Image>? )
+data class Mood( val value: Int, var text: String?, var imageList: ArrayList<Image>? ): Serializable
 {
     /********** alternative constructors **********/
 
@@ -16,8 +17,8 @@ data class Mood( val value: Int, var text: String?, var imageList: ArrayList<Ima
     // timestamp when initialized
     val time: Calendar = Calendar.getInstance()
 
-    // the drawable resource
-    val drawable: Int = when( value )
+    // the drawable resource index
+    val resource: Int = when( value )
     {
         1 -> R.drawable.tier01
         2 -> R.drawable.tier02
