@@ -31,8 +31,8 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
         // load recycler view of mood cards
         val samples = loadSampleData()
-        moodCardContainer.layoutManager = LinearLayoutManager(this)
-        moodCardContainer.adapter = MoodRecyclerViewAdapter(samples)
+        moodRecyclerView.layoutManager = LinearLayoutManager(this)
+        moodRecyclerView.adapter = MoodRecyclerViewAdapter(samples)
     }
 
     // create a list of sample mood data
