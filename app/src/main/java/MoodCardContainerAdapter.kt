@@ -13,8 +13,6 @@ import com.example.emotive.TextEntryActivity
 // a recyclerview adapter for viewing mood cards
 class MoodCardContainerAdapter( private val moodList: ArrayList<MoodCard> ): RecyclerView.Adapter<MoodCardContainerAdapter.MoodCardHolder>()
 {
-    private lateinit var parent: ViewGroup
-
     class MoodCardHolder( moodView: View ): RecyclerView.ViewHolder( moodView )
     {
         val moodIcon: ImageView = moodView.findViewById( R.id.moodIcon )
@@ -24,7 +22,6 @@ class MoodCardContainerAdapter( private val moodList: ArrayList<MoodCard> ): Rec
 
     override fun onCreateViewHolder( parent: ViewGroup, viewType: Int ): MoodCardHolder
     {
-        this.parent = parent
         val moodView = LayoutInflater.from( parent.context ).inflate( R.layout.mood_card, parent, false )
         return MoodCardHolder( moodView )
     }
@@ -33,7 +30,7 @@ class MoodCardContainerAdapter( private val moodList: ArrayList<MoodCard> ): Rec
     {
         holder.moodIcon.setImageResource( getMoodImage( moodList[pos].moodValue ) )
         holder.moodText.text = moodList[pos].moodText
-        holder.editButton.setOnClickListener{ editMood( moodList[pos] ) }
+        holder.editButton.setOnClickListener{ v -> editMood( v, moodList[pos] ) }
     }
 
     override fun getItemCount() = moodList.size
@@ -50,15 +47,16 @@ class MoodCardContainerAdapter( private val moodList: ArrayList<MoodCard> ): Rec
             5 -> return R.drawable.tier05
         }
 
-        return 0
+        return -1
     }
 
     //
-    private fun editMood( mood: MoodCard )
+    private fun editMood( view: View, mood: MoodCard )
     {
-        val intent = Intent( parent.context, TextEntryActivity::class.java )
+        val intent = Intent( view.context, TextEntryActivity::class.java )
 
         intent.putExtra( "face", mood.moodValue.toString() )
-        parent.context.startActivity( intent )
+        intent.putExtra( "text", mood.moodText )
+        view.context.startActivity( intent )
     }
 }
