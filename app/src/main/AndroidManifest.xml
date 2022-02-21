@@ -10,6 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Emotive" >
         <activity
+            android:name=".MoodDataActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:fitsSystemWindows="true"
+            android:label="@string/title_activity_mood_data"
+            android:theme="@style/Theme.Emotive.Fullscreen" />
+        <activity
             android:name=".TextEntryActivity"
             android:exported="false" />
         <activity

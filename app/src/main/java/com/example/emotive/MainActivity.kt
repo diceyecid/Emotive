@@ -10,19 +10,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // navigates to mood report
         triggerImage.setOnClickListener {
             val intent = Intent (this,
                 MoodReportActivity::class.java)
 
             startActivity(intent)
         }
-        /*
-        triggerImag.setOnClickListener {
-            val intent = Intent (this,
-                MoodReportActivity::class.java)
 
-            startActivity(intent)
+        // navigates to mood data
+        chartImage.setOnClickListener {
+            val intent = Intent (this,
+                MoodDataActivity::class.java)
+
+            startActivity( intent )
         }
-         */
     }
 }
