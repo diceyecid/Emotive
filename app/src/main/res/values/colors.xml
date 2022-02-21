@@ -12,4 +12,18 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+
+
+    <!-- matching colour palette with Figma -->
+
+    <color name="primary">#FFFF2222</color>
+    <color name="secondary">#FFFF6618</color>
+    <color name="tertiary">#FF65AFFF</color>
+    <color name="text_primary">#FF333333</color>
+    <color name="text_secondary">#FF666666</color>
+    <color name="text_tertiary">#FF999999</color>
+    <color name="home_background">#FFFCF7EC</color>
+    <color name="background">#FFF3F5F7</color>
+    <color name="division">#FFEEEEEE</color>
+    <color name="petal">#FFFFBADB</color>
 </resources>
