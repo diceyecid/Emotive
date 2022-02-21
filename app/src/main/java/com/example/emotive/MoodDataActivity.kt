@@ -1,7 +1,7 @@
 package com.example.emotive
 
-import MoodCard
-import MoodCardContainerAdapter
+import Mood
+import MoodContainerAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.widget.DatePicker
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_mood_data.*
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -32,15 +33,15 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         // load recycler view of mood cards
         val samples = loadSampleData()
         moodCardContainer.layoutManager = LinearLayoutManager(this)
-        moodCardContainer.adapter = MoodCardContainerAdapter(samples)
+        moodCardContainer.adapter = MoodContainerAdapter(samples)
     }
 
     // create a list of sample mood data
-    private fun loadSampleData(): ArrayList<MoodCard> {
-        val moodList: ArrayList<MoodCard> = ArrayList<MoodCard>()
-        moodList.add( MoodCard(1, "I get a offer from dream studio it is my lucky day" ) )
-        moodList.add( MoodCard(1, "There is a blue bird outside the window" ) )
-        moodList.add( MoodCard(3, "Mom just called me she invite me to dinner tonight. Honestly I am not interesting in that and I do not want to see Edward it is awkward." ) )
+    private fun loadSampleData(): ArrayList<Mood> {
+        val moodList: ArrayList<Mood> = ArrayList<Mood>()
+        moodList.add( Mood(1, "I get a offer from dream studio it is my lucky day" ) )
+        moodList.add( Mood(2, "There is a blue bird outside the window" ) )
+        moodList.add( Mood(3, "Mom just called me she invite me to dinner tonight. Honestly I am not interesting in that and I do not want to see Edward it is awkward." ) )
 
         return moodList
     }
@@ -63,7 +64,44 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     // set viewDate to the selected date
     override fun onDateSet( view: DatePicker?, year: Int, month: Int, day: Int )
     {
-        cal.set( year, month, day )
-        viewDate.text = getString( R.string.date, year, month, day )
+        val now = Calendar.getInstance()
+        val temp = Calendar.getInstance()
+        temp.set( year, month, day )
+
+        // if the selected time is in the future
+        if( now.before( temp ) )
+            return
+        // else set user calendar to the selected datetime
+        else
+            cal.set( year, month, day )
+
+        val yest = Calendar.getInstance()
+        yest.add( Calendar.DATE, -1 )
+
+        // if today is selected
+        if( now.get( Calendar.YEAR ) == year &&
+            now.get( Calendar.MONTH ) == month &&
+            now.get( Calendar.DATE ) == day
+        )
+        {
+            viewDate.text = getString( R.string.today )
+        }
+        // if yesterday is selected
+        else if( yest.get( Calendar.YEAR ) == year &&
+                 yest.get( Calendar.MONTH ) == month &&
+                 yest.get( Calendar.DATE ) == day
+        )
+        {
+            viewDate.text = getString( R.string.yesterday )
+        }
+        // if this year is selected
+        else if( now.get( Calendar.YEAR ) == year )
+        {
+            viewDate.text = getString( R.string.MM_dd, month+1, day)
+        }
+        else
+        {
+            viewDate.text = getString( R.string.yy_MM_dd, year, month+1, day )
+        }
     }
 }

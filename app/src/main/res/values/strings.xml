@@ -10,9 +10,17 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
+    <!-- Strings for mood report activities -->
+    <string name="text_entry_placeholder">Anything You Want To Share?</string>
+
     <!-- Strings for mood data activity-->
     <string name="title_activity_mood_data">MoodDataActivity</string>
     <string name="calendar">Date selector</string>
     <string name="edit">Edit this selection</string>
-    <string name="date">%1$d-%2$d-%3$d</string>
+
+    <!-- Strings to represent date -->
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="MM_dd">%1$02d-%2$02d</string>
+    <string name="yy_MM_dd">%1$04d-%2$02d-%3$02d</string>
 </resources>
