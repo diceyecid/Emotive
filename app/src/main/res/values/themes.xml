@@ -26,7 +26,7 @@
     </style>
 
     <style name="ThemeOverlay.Emotive.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
-        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+        <item name="fullscreenBackgroundColor">@color/background</item>
+        <item name="fullscreenTextColor">@color/text_primary</item>
     </style>
 </resources>
