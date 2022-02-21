@@ -14,4 +14,5 @@
     <string name="title_activity_mood_data">MoodDataActivity</string>
     <string name="calendar">Date selector</string>
     <string name="edit">Edit this selection</string>
+    <string name="date">%1$d-%2$d-%3$d</string>
 </resources>
