@@ -25,5 +25,7 @@ class MainActivity : AppCompatActivity() {
 
             startActivity( intent )
         }
+
+        // navigates to the reward pop up window
     }
 }
