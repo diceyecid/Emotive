@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/fullscreenBackgroundColor"
+    android:fitsSystemWindows="true"
+    android:theme="@style/ThemeOverlay.Emotive.FullscreenContainer"
+    tools:context=".MoodReportActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="100dp" />
+
+        <ImageView
+            android:id="@+id/mrPrevImage"
+            android:layout_width="43dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:srcCompat="@drawable/prev_page" />
+
+        <TextView
+            android:id="@+id/storeTextView"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="Store"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="45dp"
+            android:layout_height="25dp"
+            android:src="@drawable/petal"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/petalTextView"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/storeTextView" />
+
+        <TextView
+            android:id="@+id/petalTextView"
+            android:layout_width="95dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="120dp"
+            android:text="TextView"
+            android:textAlignment="viewStart"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/decorationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Decoration"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="280dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="470dp" />
+
+        <TextView
+            android:id="@+id/AvatarTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avatar"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+        <TextView
+            android:id="@+id/BackgoundTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Backgound"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+        <ImageView
+            android:id="@+id/itemSetImage1"
+            android:layout_width="365dp"
+            android:layout_height="156dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/item_set"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+        <ImageView
+            android:id="@+id/itemSetImage2"
+            android:layout_width="365dp"
+            android:layout_height="156dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/item_set"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+        <ImageView
+            android:id="@+id/itemSetImage3"
+            android:layout_width="365dp"
+            android:layout_height="156dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/item_set"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

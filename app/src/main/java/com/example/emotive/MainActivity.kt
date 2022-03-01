@@ -26,6 +26,13 @@ class MainActivity : AppCompatActivity() {
             startActivity( intent )
         }
 
-        // navigates to the reward pop up window
+        // navigates to the shop
+        shopImage.setOnClickListener{
+            intent = Intent (this,
+                             ShopActivity::class.java)
+            intent.putExtra("petalNum", petalText.text)
+
+            startActivity( intent )
+        }
     }
 }
