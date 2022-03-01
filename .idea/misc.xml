@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_mood_data.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_mood_report.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_shop.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_store.xml" value="0.11822916666666666" />
         <entry key="app/src/main/res/drawable/calendar.xml" value="0.4111111111111111" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.4101851851851852" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2199575427139536" />
