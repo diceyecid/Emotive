@@ -9,6 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Emotive">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:fitsSystemWindows="true"
+            android:theme="@style/Theme.Emotive.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ShopActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -34,17 +46,6 @@
             android:exported="false"
             android:fitsSystemWindows="true"
             android:theme="@style/Theme.Emotive.Fullscreen" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:fitsSystemWindows="true"
-            android:theme="@style/Theme.Emotive.Fullscreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

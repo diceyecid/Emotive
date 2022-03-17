@@ -1,5 +1,6 @@
 package com.example.emotive
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,10 +30,22 @@ class MainActivity : AppCompatActivity() {
         // navigates to the shop
         shopImage.setOnClickListener{
             intent = Intent (this,
-                             ShopActivity::class.java)
+                ShopActivity::class.java)
             intent.putExtra("petalNum", petalText.text)
 
             startActivity( intent )
         }
+
+        // navigates to the reward pop up window
+        userImage.setOnClickListener {
+            val customdialog = Dialog(this )
+            customdialog.setContentView(R.layout.activity_reward_gain)
+            customdialog.show()
+        }
+
+
+
     }
 }
+
+
