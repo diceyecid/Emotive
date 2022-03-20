@@ -1,3 +1,5 @@
+package com.example.emotive
+
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -6,11 +8,9 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.emotive.R
-import com.example.emotive.TextEntryActivity
 
 // a recyclerview adapter for viewing mood cards
-class MoodRecyclerViewAdapter(private val moodList: ArrayList<Mood> ): RecyclerView.Adapter<MoodRecyclerViewAdapter.MoodHolder>()
+class MoodRecyclerViewAdapter(private val moodList: List<Mood> ): RecyclerView.Adapter<MoodRecyclerViewAdapter.MoodHolder>()
 {
     class MoodHolder(moodView: View ): RecyclerView.ViewHolder( moodView )
     {
@@ -25,7 +25,7 @@ class MoodRecyclerViewAdapter(private val moodList: ArrayList<Mood> ): RecyclerV
         return MoodHolder( moodView )
     }
 
-    override fun onBindViewHolder( holder: MoodHolder, pos: Int )
+    override fun onBindViewHolder(holder: MoodHolder, pos: Int )
     {
         holder.moodIcon.setImageResource( moodList[pos].resource )
         holder.moodText.text = moodList[pos].text
@@ -35,7 +35,7 @@ class MoodRecyclerViewAdapter(private val moodList: ArrayList<Mood> ): RecyclerV
     override fun getItemCount() = moodList.size
 
     // navigate to text entry to edit mood
-    private fun editMood( view: View, mood: Mood )
+    private fun editMood( view: View, mood: Mood)
     {
         val intent = Intent( view.context, TextEntryActivity::class.java )
         intent.putExtra( "mood", mood )

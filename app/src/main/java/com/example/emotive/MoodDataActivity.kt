@@ -1,12 +1,12 @@
 package com.example.emotive
 
-import Mood
-import MoodRecyclerViewAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.DatePicker
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_mood_data.*
 import java.util.*
@@ -17,6 +17,9 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 {
     // date selection
     private val cal = Calendar.getInstance()
+
+    // database
+    private lateinit var moodViewModel : MoodViewModel
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,9 +33,16 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
 
         // load recycler view of mood cards
-        val samples = loadSampleData()
-        moodRecyclerView.layoutManager = LinearLayoutManager(this)
-        moodRecyclerView.adapter = MoodRecyclerViewAdapter(samples)
+//        val samples = loadSampleData()
+//        moodRecyclerView.layoutManager = LinearLayoutManager(this)
+//        moodRecyclerView.adapter = com.example.emotive.MoodRecyclerViewAdapter(samples)
+
+        // database interaction
+        moodViewModel = ViewModelProvider( this, MoodViewModelFactory( this.application ) ).get( MoodViewModel::class.java )
+        moodViewModel.allMoods.observe( this, Observer{
+            moodRecyclerView.layoutManager = LinearLayoutManager( this )
+            moodRecyclerView.adapter = MoodRecyclerViewAdapter( it )
+        } )
     }
 
     // create a list of sample mood data

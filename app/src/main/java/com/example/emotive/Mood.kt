@@ -1,23 +1,33 @@
+package com.example.emotive
+
 import android.media.Image
-import com.example.emotive.R
+import androidx.room.*
 import java.io.Serializable
 import java.util.*
+import kotlin.collections.ArrayList
 
 // this class is an abstract representation of mood data
-data class Mood( val value: Int, var text: String?, var imageList: ArrayList<Image>? ): Serializable
+@Entity( tableName = "Mood" )
+data class Mood(
+    val value: Int,
+    var text: String?,
+    @Ignore var imageList: ArrayList<Image>?
+    ): Serializable
 {
     /********** alternative constructors **********/
 
-    constructor( value: Int, text: String ): this( value, text, null )
-    constructor( value: Int ): this( value, null, null )
-
+    constructor( value: Int, text: String? ): this( value, text, null )
+    @Ignore constructor( value: Int ): this( value, null, null )
 
     /********** additional attributes **********/
 
     // timestamp when initialized
-    val time: Calendar = Calendar.getInstance()
+    @PrimaryKey
+    @TypeConverters( Converter::class )
+    var time: Calendar = Calendar.getInstance()
 
     // the drawable resource index
+    @Ignore
     val resource: Int = when( value )
     {
         1 -> R.drawable.tier01

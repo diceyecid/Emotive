@@ -1,13 +1,21 @@
 package com.example.emotive
 
-import Mood
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.activity_mood_data.*
 import kotlinx.android.synthetic.main.activity_text_entry.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TextEntryActivity : AppCompatActivity() {
+
+    private lateinit var db : AppDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_entry)
@@ -29,9 +37,7 @@ class TextEntryActivity : AppCompatActivity() {
         }
          */
 
-
-
-
+        db = AppDatabase.getDatabase( this )
 
         val newMood = intent.getSerializableExtra( "mood" ) as Mood
         moodFace.setImageResource( newMood.resource )
@@ -69,7 +75,9 @@ class TextEntryActivity : AppCompatActivity() {
             finish()
         }
         doneButtonImage.setOnClickListener {
-            // TODO: save newMood to database
+
+            var viewModel = ViewModelProvider( this, MoodViewModelFactory( this.application ) ).get( MoodViewModel::class.java )
+            viewModel.insert( newMood )
 
             val intent = Intent (this,
                 MainActivity::class.java)
