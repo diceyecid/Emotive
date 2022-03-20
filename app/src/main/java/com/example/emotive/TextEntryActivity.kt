@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class TextEntryActivity : AppCompatActivity() {
 
-    private lateinit var db : AppDatabase
+    private lateinit var viewModel : MoodViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,7 @@ class TextEntryActivity : AppCompatActivity() {
         }
          */
 
-        db = AppDatabase.getDatabase( this )
+        viewModel = ViewModelProvider( this, MoodViewModelFactory( this.application ) ).get( MoodViewModel::class.java )
 
         val newMood = intent.getSerializableExtra( "mood" ) as Mood
         moodFace.setImageResource( newMood.resource )
@@ -75,8 +75,8 @@ class TextEntryActivity : AppCompatActivity() {
             finish()
         }
         doneButtonImage.setOnClickListener {
-
-            var viewModel = ViewModelProvider( this, MoodViewModelFactory( this.application ) ).get( MoodViewModel::class.java )
+            // save newMood to database
+            newMood.text = inputText.text.toString()
             viewModel.insert( newMood )
 
             val intent = Intent (this,
@@ -88,14 +88,14 @@ class TextEntryActivity : AppCompatActivity() {
         if( newMood.text !== null )
         {
             // display text
-            inputText.setText( newMood.text )
+            if( newMood.text != null )
+                inputText.setText( newMood.text )
 
             // overwrite done button listener
             doneButtonImage.setOnClickListener {
+                // save newMood to database
                 newMood.text = inputText.text.toString()
-                Log.d( "edited mood", newMood.text!! )
-
-                // TODO: save newMood to database
+                viewModel.insert( newMood )
 
                 super.onBackPressed()
             }
