@@ -7,10 +7,21 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 // this class is an abstract representation of mood data
+
+/*
+@Entity (tableName = "users_table")
+data class User (@ColumnInfo (name ="username") var username: String,
+                 @ColumnInfo (name = "email") var email: String)
+{
+    @PrimaryKey(autoGenerate = true) var uid: Int = 0
+}
+
+ */
+
 @Entity( tableName = "Mood" )
 data class Mood(
-    val value: Int,
-    var text: String?,
+    @ColumnInfo (name ="value") val value: Int,
+    @ColumnInfo (name = "text") var text: String?,
     @Ignore var imageList: ArrayList<Image>?
     ): Serializable
 {
@@ -24,7 +35,7 @@ data class Mood(
     // timestamp when initialized
     @PrimaryKey
     @TypeConverters( Converter::class )
-    var time: Calendar = Calendar.getInstance()
+    @ColumnInfo (name = "time") var time: Calendar = Calendar.getInstance()
 
     // the drawable resource index
     @Ignore

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.Factory
 import androidx.lifecycle.viewModelScope
+import androidx.room.Query
 import androidx.room.Room
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,4 +18,8 @@ class MoodViewModel( app : Application ) : ViewModel()
     val allMoods : LiveData<List<Mood>> = dao.getAllMoods()
 
     fun insert( mood : Mood ) = viewModelScope.launch( Dispatchers.IO ){ dao.insert( mood ) }
+
+    //@Query( "UPDATE Mood SET text = mood.text WHERE time = mood.time" )
+    //fun setMoodEntry( mood: Mood) = viewModelScope.launch( Dispatchers.IO ){ dao.setMoodEntry( mood ) }
+    fun updateMood ( mood : Mood ) = viewModelScope.launch( Dispatchers.IO ){ dao.updateMood( mood ) }
 }

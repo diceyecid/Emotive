@@ -74,6 +74,7 @@ class TextEntryActivity : AppCompatActivity() {
         tePrevImage.setOnClickListener {
             finish()
         }
+        /*
         doneButtonImage.setOnClickListener {
             // save newMood to database
             newMood.text = inputText.text.toString()
@@ -84,6 +85,30 @@ class TextEntryActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+         */
+
+        if( newMood.text != null )
+            inputText.setText( newMood.text )
+
+
+        doneButtonImage.setOnClickListener {
+            // save newMood to database
+            if( newMood.text == null ){
+                newMood.text = inputText.text.toString()
+                viewModel.insert( newMood )
+
+                val intent = Intent (this,
+                    MainActivity::class.java)
+                startActivity(intent)
+            }
+            else{
+                newMood.text = inputText.text.toString()
+                viewModel.updateMood(newMood)
+                super.onBackPressed()
+
+            }
+        }
+        /*
         // if it's a mood entry edit
         if( newMood.text !== null )
         {
@@ -94,11 +119,14 @@ class TextEntryActivity : AppCompatActivity() {
             // overwrite done button listener
             doneButtonImage.setOnClickListener {
                 // save newMood to database
-                newMood.text = inputText.text.toString()
-                viewModel.insert( newMood )
-
-                super.onBackPressed()
+                //newMood.text = inputText.text.toString()
+                //viewModel.setMoodEntry( newMood )
+                //viewModel.updateMood(newMood)
+                //super.onBackPressed()
+                //finish()
             }
         }
+
+         */
     }
 }
