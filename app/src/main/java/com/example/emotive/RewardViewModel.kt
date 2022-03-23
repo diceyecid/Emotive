@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class RewardViewModel( app : Application ) : ViewModel() {
 
     private val dao : AppDao = AppDatabase.getDatabase( app ).appDao()
-    val allMoods : LiveData<List<Mood>> = dao.getAllMoods()
+    val allRewards : LiveData<List<Reward>> = dao.getAllRewards()
 
     fun insertReward( reward : Reward ) = viewModelScope.launch( Dispatchers.IO ){ dao.insertReward( reward ) }
 
