@@ -1,10 +1,13 @@
 package com.example.emotive
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.alert_reward_gain.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,9 +41,30 @@ class MainActivity : AppCompatActivity() {
 
         // navigates to the reward pop up window
         userImage.setOnClickListener {
+            /*
+
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.alert_reward_gain, null);
+            val mBuilder = AlertDialog.Builder(this)
+                .setView(mDialogView)
+            val mAlertDialog = mBuilder.show()
+            */
+
+            val customdialog = Dialog(this )
+            customdialog.setContentView(R.layout.alert_reward_gain)
+            customdialog.show()
+
+            customdialog.textView1.setOnClickListener{
+                customdialog.dismiss()
+            }
+
+
+            //OLD
+            /*
             val customdialog = Dialog(this )
             customdialog.setContentView(R.layout.activity_reward_gain)
             customdialog.show()
+
+             */
         }
 
 
