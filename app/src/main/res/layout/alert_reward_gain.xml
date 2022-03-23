@@ -23,7 +23,7 @@
         tools:ignore="TextContrastCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/moodRecyclerView"
+        android:id="@+id/rewardRecyclerView"
         android:layout_width="230dp"
         android:layout_height="200dp">
 
