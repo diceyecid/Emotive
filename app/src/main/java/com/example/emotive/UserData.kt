@@ -35,25 +35,26 @@ class UserData private constructor( app : Context )
                 apply()
             }
         }
-    var background : Item = gson.fromJson( sharedPref.getString( BACKGROUND, null ), Item::class.java )
+    var background : Item? = gson.fromJson( sharedPref.getString( BACKGROUND, null ), Item::class.java )
         set( item )
         {
             field = item
             writeToSharePref( BACKGROUND, field )
         }
-    var avatar : Item = gson.fromJson( sharedPref.getString( AVATAR, null ), Item::class.java )
+    var avatar : Item? = gson.fromJson( sharedPref.getString( AVATAR, null ), Item::class.java )
         set( item )
         {
             field = item
             writeToSharePref( AVATAR, field )
         }
-    var decoration : Item = gson.fromJson( sharedPref.getString( DECORATION, null ), Item::class.java )
+    var decoration : Item? = gson.fromJson( sharedPref.getString( DECORATION, null ), Item::class.java )
         set( item )
         {
             field = item
             writeToSharePref( DECORATION, field )
         }
-    var unlockedItems : ArrayList<Item> = gson.fromJson( sharedPref.getString( UNLOCKED_ITEMS, null ), itemListType )
+    var unlockedItems : ArrayList<Item> =
+        gson.fromJson( sharedPref.getString( UNLOCKED_ITEMS, gson.toJson( ArrayList<Item>() ) ), itemListType )
         private set( items )
         {
             field = items
@@ -65,7 +66,7 @@ class UserData private constructor( app : Context )
 
 
     // write object to shared preferences
-    fun writeToSharePref( key : String, data : Any )
+    fun writeToSharePref( key : String, data : Any? )
     {
         val json = gson.toJson( data )
         with( sharedPref.edit() )

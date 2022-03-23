@@ -15,10 +15,16 @@ import kotlinx.android.synthetic.main.alert_reward_gain.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var userData: UserData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        userData = UserData.getInstance( this )
+
+        // get petal amount
+        petalText.text = userData.basket.toString()
 
         // navigates to mood report
         triggerImage.setOnClickListener {
