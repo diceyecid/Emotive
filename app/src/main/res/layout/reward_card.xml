@@ -3,67 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rewardCard"
-    android:layout_width="230dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="20dp"
     android:layout_marginVertical="10dp"
     app:cardCornerRadius="5dp">
 
     <LinearLayout
-        android:layout_width="230dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/rewardText"
-            android:layout_width="110dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:minWidth="110dp"
             android:text="First mood status update today" />
 
-        <RelativeLayout
+        <Button
             android:id="@+id/imageBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#FF2222"
-            tools:layout_editor_absoluteX="9dp"
-            tools:layout_editor_absoluteY="26dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_petal"
+            android:text="x 20" />
 
-            <ImageView
-                android:id="@+id/iconImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/petal" />
-
-            <TextView
-                android:id="@+id/rewardNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="5dp"
-                android:layout_toEndOf="@+id/iconImage"
-                android:fontFamily="sans-serif-smallcaps"
-                android:paddingStart="0dp"
-                android:paddingEnd="5dp"
-                android:text="x 20"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

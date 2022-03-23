@@ -61,13 +61,13 @@ class MainActivity : AppCompatActivity() {
             var rewardViewModel : RewardViewModel =
                 ViewModelProvider(this, RewardViewModelFactory(this.application)).get( RewardViewModel::class.java )
 
+            // rewardViewModel.insertReward( Reward( "test", 10 ) )
+
             //TODO THIS
-            /*
             rewardViewModel.allRewards.observe( this, Observer{
                 customdialog.rewardRecyclerView.layoutManager = LinearLayoutManager( this )
                 customdialog.rewardRecyclerView.adapter = RewardRecyclerViewAdapter( it )
             } )
-            */
 
             /*
             customdialog.textView1.setOnClickListener{

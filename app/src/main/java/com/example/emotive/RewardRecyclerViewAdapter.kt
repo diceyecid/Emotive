@@ -4,10 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 
 // a recyclerview adapter for viewing Reward cards
@@ -15,8 +12,7 @@ class RewardRecyclerViewAdapter(private val rewardList: List<Reward> ): Recycler
     class RewardHolder(rewardView: View) : RecyclerView.ViewHolder(rewardView) {
         //val rewardIcon: ImageView = rewardView.findViewById(R.id.rewardIcon)
         val rewardText: TextView = rewardView.findViewById(R.id.rewardText)
-        val imageButton: RelativeLayout = rewardView.findViewById(R.id.imageBtn)
-        val rewardNumber: TextView = rewardView.findViewById(R.id.rewardNum)
+        val imageButton: Button = rewardView.findViewById(R.id.imageBtn)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RewardHolder {
@@ -28,7 +24,7 @@ class RewardRecyclerViewAdapter(private val rewardList: List<Reward> ): Recycler
     override fun onBindViewHolder(holder: RewardHolder, pos: Int) {
         //holder.rewardIcon.setImageResource(rewardList[pos].resource)
         holder.rewardText.text = rewardList[pos].text
-        holder.rewardNumber.text = rewardList[pos].petal.toString()
+        holder.imageButton.text = 'x' + rewardList[pos].petal.toString()
         holder.imageButton.setOnClickListener { v -> claimReward(v, rewardList[pos]) }
     }
 
@@ -36,7 +32,7 @@ class RewardRecyclerViewAdapter(private val rewardList: List<Reward> ): Recycler
 
     // navigate to text entry to edit Reward
     private fun claimReward(view: View, Reward: Reward) {
-        val intent = Intent(view.context, TextEntryActivity::class.java)
+        val intent = Intent(view.context, MainActivity::class.java)
         intent.putExtra("Reward", Reward)
         view.context.startActivity(intent)
     }
