@@ -1,29 +1,43 @@
 package com.example.emotive
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
+import java.util.*
 
 @Dao
 interface AppDao
 {
+    /********** Mood **********/
+
+
     @Insert
-    suspend fun insert( mood : Mood)
+    suspend fun insertMood( mood : Mood )
+
+    @Update
+    fun updateMood( mood: Mood )
 
     @Query( "SELECT * FROM Mood" )
     fun getAllMoods() : LiveData<List<Mood>>
-    /*
-    @Query("UPDATE orders SET order_amount = :amount, price = :price WHERE order_id =:id")
-    fun update(amount: Float?, price: Float?, id: Int)
+
+//    @Query( "SELECT * FROM Mood WHERE :mood.time" )
+//    fun getMoodByTime( start : Calendar, end : Calendar ) : LiveData<List<Mood>>
 
 
-     */
-    /*
-    @Query( "UPDATE Mood SET text = :text WHERE time = :time" )
-    fun setMoodEntry( mood: Mood)
-    */
-    @Update
-    fun updateMood( mood: Mood )
+    /********** Item **********/
+
+
+    @Query( "SELECT * FROM Item" )
+    fun getAllItems() : LiveData<List<Item>>
+
+
+    /********** Reward **********/
+
+    @Insert
+    suspend fun insertReward( reward : Reward )
+
+    @Query( "SELECT * FROM Reward" )
+    fun getAllRewards() : LiveData<List<Reward>>
+
+    @Delete
+    fun deleteReward( reward : Reward )
 }
