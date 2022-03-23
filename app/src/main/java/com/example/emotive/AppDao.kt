@@ -19,15 +19,8 @@ interface AppDao
     @Query( "SELECT * FROM Mood" )
     fun getAllMoods() : LiveData<List<Mood>>
 
-//    @Query( "SELECT * FROM Mood WHERE :mood.time" )
-//    fun getMoodByTime( start : Calendar, end : Calendar ) : LiveData<List<Mood>>
-
-
-    /********** Item **********/
-
-
-    @Query( "SELECT * FROM Item" )
-    fun getAllItems() : LiveData<List<Item>>
+    @Query( "SELECT * FROM Mood WHERE date( time, 'unixepoch' ) = date( :date )" )
+    fun getMoodByDate( date : String ) : LiveData<List<Mood>>
 
 
     /********** Reward **********/
