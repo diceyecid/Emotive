@@ -1,21 +1,22 @@
 package com.example.emotive
 
-import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_mood_data.*
 import kotlinx.android.synthetic.main.alert_reward_gain.*
+import java.io.IOException
+import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var userData: UserData
+    //var obj: JSONObject = JSONObject(loadJSONFromAsset())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,6 +94,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 }
 
 

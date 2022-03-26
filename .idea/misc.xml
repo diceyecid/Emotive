@@ -10,17 +10,17 @@
         <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_store.xml" value="0.11822916666666666" />
         <entry key="app/src/main/res/drawable/calendar.xml" value="0.4111111111111111" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.4101851851851852" />
-        <entry key="app/src/main/res/drawable/ic_petal.xml" value="0.21666666666666667" />
-        <entry key="app/src/main/res/drawable/sunset_farm.xml" value="0.34444444444444444" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2199575427139536" />
-        <entry key="app/src/main/res/layout/activity_mood_data.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_mood_report.xml" value="0.5357789855072463" />
+        <entry key="app/src/main/res/layout/activity_mood_data.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_mood_report.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_reward_gain.xml" value="0.2484375" />
+        <entry key="app/src/main/res/layout/activity_shop.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/activity_text_entry.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/alert_reward_gain.xml" value="0.2656146791182866" />
+        <entry key="app/src/main/res/layout/alert_reward_gain.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/dialog_reward_gain.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_date_picker.xml" value="0.20925925925925926" />
         <entry key="app/src/main/res/layout/mood_card.xml" value="0.2932748657507866" />
-        <entry key="app/src/main/res/layout/reward_card.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/reward_card.xml" value="0.18" />
       </map>
     </option>
   </component>
