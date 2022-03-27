@@ -20,8 +20,8 @@ class ShopActivity : AppCompatActivity() {
         var jsonFileString = Utils.getJsonFromAssets(getApplicationContext(), "store.json")
         var gson : Gson = Gson()
 
-        //var user = UserData.getInstance(this)
-
+        var user = UserData.getInstance(this)
+        petalTextView.text = user.basket.toString()
         //val jsonFileString = gson.toJson( "store.json" )
         //var list = arrayListOf<User>()
 
@@ -72,7 +72,6 @@ class ShopActivity : AppCompatActivity() {
 
         //itemRecyclerView.layoutManager = LinearLayoutManager(this)
         bgRecyclerView.adapter = ItemRecyclerViewAdapter(bgSamples, applicationContext)
-
 
         /*
         button.setOnClickListener {

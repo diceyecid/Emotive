@@ -83,6 +83,4 @@ class ItemRecyclerViewAdapter(private val itemList: List<Item>,val context: Cont
         //intent.putExtra( "item", item )
         view.context.startActivity( intent )
     }
-
-    
 }

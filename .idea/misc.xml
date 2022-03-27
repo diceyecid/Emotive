@@ -17,11 +17,12 @@
         <entry key="app/src/main/res/layout/activity_mood_report.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_reward_gain.xml" value="0.2484375" />
         <entry key="app/src/main/res/layout/activity_shop.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_text_entry.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_text_entry.xml" value="0.18" />
         <entry key="app/src/main/res/layout/alert_reward_gain.xml" value="0.18" />
         <entry key="app/src/main/res/layout/dialog_reward_gain.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_date_picker.xml" value="0.20925925925925926" />
         <entry key="app/src/main/res/layout/mood_card.xml" value="0.26573426573426573" />
+        <entry key="app/src/main/res/layout/mood_data_card.xml" value="0.2336448598130841" />
         <entry key="app/src/main/res/layout/reward_card.xml" value="0.18" />
         <entry key="app/src/main/res/layout/shop_card.xml" value="0.33" />
       </map>
