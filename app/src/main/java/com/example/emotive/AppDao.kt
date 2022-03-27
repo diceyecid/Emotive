@@ -24,6 +24,7 @@ interface AppDao
 
     /********** Reward **********/
 
+
     @Insert
     suspend fun insertReward( reward : Reward )
 
