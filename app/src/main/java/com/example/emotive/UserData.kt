@@ -80,6 +80,8 @@ class UserData private constructor( app : Context )
     fun addPetals( amount : Int ) { basket += amount }
     fun removePetals( amount : Int ) { basket -= amount }
 
+    fun setPetals( amount : Int ) { basket = amount }
+
     // only append is allowed for unlocked items
     fun unlockItem( item : Item ) { unlockedItems.add( item ) }
 

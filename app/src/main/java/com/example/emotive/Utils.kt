@@ -22,6 +22,40 @@ object Utils {
     }
 
 
+    fun arrayToString(arr: ArrayList<String> ): String{
+        var myString = StringBuilder()
+        for (item in arr)
+        {
+            myString.append(item).append(",")
+        }
+        return myString.toString()
+    }
+
+    fun stringToArray(text: String ): ArrayList<String>
+    {
+        var arr = text.split(",").toTypedArray()
+        val list = arrayListOf<String>()
+        //val builder = StringBuilder()
+        for (item in arr)
+        {
+            var newLine = item
+            //builder.append(item)
+            //builder.append(item)
+            //item.indexOf("D")
+            //var newLine=StringBuffer(item).insert(5, "\n").toString();
+            //var newLine = StringBuilder(item).insert(-5, "\n").toString()
+            //item.indexOf("[")
+            //builder.toString()
+            list.add(item)
+
+        }
+        if(list.get(list.count()-1)==""){
+            list.removeAt(list.count()-1)
+        }
+        return list
+    }
+
+
     /********** time related helper functions **********/
 
 

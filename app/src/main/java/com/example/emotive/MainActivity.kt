@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,14 +16,46 @@ import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var userData: UserData
+    // private lateinit var userData: UserData
     //var obj: JSONObject = JSONObject(loadJSONFromAsset())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        userData = UserData.getInstance( this )
+        var userData = UserData.getInstance( this )
+        //userData.setPetals(50)
+        //userData.lockAllItems()
+        Log.d("unlock",userData.unlockedItems.size.toString())
+        if(userData.unlockedItems.size==0){
+            userData.unlockItem(Item(1,30, "@drawable/ava_fox", 3 ))
+            userData.avatar=Item(1,30, "@drawable/ava_fox", 3 )
+            userData.background=Item(-1,0, "@drawable/empty_icon", -1 )
+            userData.decoration=Item(-1,0, "@drawable/empty_icon", -1 )
+        }
+
+
+
+
+
+
+        var bgDrawableId: Int = this.getResources().getIdentifier(
+            userData.background!!.path,
+            "drawable",
+            this.getPackageName())
+        backgroundImage.setImageResource(bgDrawableId)
+        var avDrawableId: Int = this.getResources().getIdentifier(
+            userData.avatar!!.path,
+            "drawable",
+            this.getPackageName())
+        avatarImage.setImageResource(avDrawableId)
+        var dcDrawableId: Int = this.getResources().getIdentifier(
+            userData.decoration!!.path,
+            "drawable",
+            this.getPackageName())
+        decorationImage.setImageResource(dcDrawableId)
+
+
 
         // get petal amount
         petalText.text = userData.basket.toString()

@@ -15,32 +15,24 @@
         android:background="#FCF7EC">
 
         <ImageView
-            android:id="@+id/foxImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/backgroundImage"
+            android:layout_width="600dp"
+            android:layout_height="900dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.608"
-            app:srcCompat="@drawable/little_fox" />
-
-        <ImageView
-            android:id="@+id/triggerImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="91dp"
-            android:layout_marginTop="39dp"
-            app:layout_constraintStart_toStartOf="@+id/foxImage"
-            app:layout_constraintTop_toTopOf="@+id/foxImage"
-            app:srcCompat="@drawable/mood_trigger" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/bg_forest" />
 
         <ImageView
             android:id="@+id/petalImage"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="40dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="292dp"
+            android:layout_marginEnd="280dp"
             android:text="100"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -62,12 +54,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="362dp"
-            android:layout_marginTop="-50dp"
+            android:layout_marginTop="200dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.978"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/foxImage"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/chart" />
 
         <ImageView
@@ -75,12 +67,12 @@
             android:layout_width="28dp"
             android:layout_height="30dp"
             android:layout_marginStart="362dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/foxImage"
+            app:layout_constraintTop_toTopOf="@+id/chartImage"
             app:srcCompat="@drawable/shop" />
 
         <ImageView
@@ -88,13 +80,52 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="362dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/foxImage"
+            app:layout_constraintTop_toTopOf="@+id/shopImage"
             app:srcCompat="@drawable/user" />
+
+
+        <ImageView
+            android:id="@+id/avatarImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ava_fox" />
+
+
+        <ImageView
+            android:id="@+id/decorationImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.363"
+            app:srcCompat="@drawable/decor_santa_hat" />
+
+        <ImageView
+            android:id="@+id/triggerImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/shopImage"
+            app:layout_constraintHorizontal_bias="0.255"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.323"
+            app:srcCompat="@drawable/mood_trigger" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
