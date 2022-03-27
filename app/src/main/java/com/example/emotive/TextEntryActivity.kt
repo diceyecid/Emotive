@@ -106,7 +106,7 @@ class TextEntryActivity : AppCompatActivity() {
             // save newMood to database
             if( newMood.text == null ){
                 newMood.text = inputText.text.toString()
-                viewModel.insert( newMood )
+                viewModel.insertMood( newMood )
 
                 val intent = Intent (this,
                     MainActivity::class.java)

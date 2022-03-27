@@ -6,25 +6,27 @@
         <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_mood_data.xml" value="0.19791666666666666" />
         <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_mood_report.xml" value="0.19791666666666666" />
-        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_reward_gain.xml" value="0.1890625" />
         <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_shop.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_store.xml" value="0.11822916666666666" />
-        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/activity_text_entry.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/alert_reward_gain.xml" value="0.1890625" />
-        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/mood_card.xml" value="0.1890625" />
-        <entry key="..\:/Users/yingz/AndroidStudioProjects/Emotive/app/src/main/res/layout/reward_card.xml" value="0.1890625" />
         <entry key="app/src/main/res/drawable/calendar.xml" value="0.4111111111111111" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.4101851851851852" />
+        <entry key="app/src/main/res/layout/activity_data_shop.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2199575427139536" />
-        <entry key="app/src/main/res/layout/activity_mood_data.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_mood_report.xml" value="0.5357789855072463" />
+        <entry key="app/src/main/res/layout/activity_mood_data.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_mood_report.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_reward_gain.xml" value="0.2484375" />
+        <entry key="app/src/main/res/layout/activity_shop.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_text_entry.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/alert_reward_gain.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/dialog_reward_gain.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_date_picker.xml" value="0.20925925925925926" />
-        <entry key="app/src/main/res/layout/mood_card.xml" value="0.2932748657507866" />
+        <entry key="app/src/main/res/layout/mood_card.xml" value="0.26573426573426573" />
+        <entry key="app/src/main/res/layout/reward_card.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/shop_card.xml" value="0.33" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

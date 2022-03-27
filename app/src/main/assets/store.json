@@ -1,0 +1,20 @@
+[
+  {
+    "type": 0,
+    "price": 20,
+    "path": "ava_fox",
+    "uid": 0
+  },
+  {
+    "type": 0,
+    "price": 20,
+    "path": "ava_owl",
+    "uid": 1
+  },
+  {
+    "type": 0,
+    "price": 20,
+    "path": "ava_red_panda",
+    "uid": 2
+  }
+]

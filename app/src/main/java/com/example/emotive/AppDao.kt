@@ -2,7 +2,6 @@ package com.example.emotive
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import java.util.*
 
 @Dao
 interface AppDao
@@ -14,13 +13,13 @@ interface AppDao
     suspend fun insertMood( mood : Mood )
 
     @Update
-    fun updateMood( mood: Mood )
+    suspend fun updateMood( mood: Mood )
 
     @Query( "SELECT * FROM Mood" )
     fun getAllMoods() : LiveData<List<Mood>>
 
-    @Query( "SELECT * FROM Mood WHERE date( time, 'unixepoch' ) = date( :date )" )
-    fun getMoodByDate( date : String ) : LiveData<List<Mood>>
+    @Query( "SELECT * FROM Mood WHERE time BETWEEN :start AND :end ORDER BY time DESC" )
+    fun getMoodByTime( start : Long, end : Long ) : List<Mood>
 
 
     /********** Reward **********/
