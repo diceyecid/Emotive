@@ -1,25 +1,27 @@
 package com.example.emotive
 
 import android.app.Application
-import android.content.Context
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProvider.Factory
-import androidx.lifecycle.viewModelScope
-import androidx.room.Query
-import androidx.room.Room
+import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MoodViewModel( app : Application ) : ViewModel()
 {
-    private val dao : AppDao = AppDatabase.getDatabase( app ).appDao()
-    val allMoods : LiveData<List<Mood>> = dao.getAllMoods()
+    private val repo : MoodRepository = MoodRepository.getInstance( app )
+    val moods : MutableLiveData<List<Mood>> = repo.moods
 
-    fun insert( mood : Mood ) = viewModelScope.launch( Dispatchers.IO ){ dao.insertMood( mood ) }
+    fun insertMood(mood : Mood ) = viewModelScope.launch( Dispatchers.IO )
+    {
+        repo.insertMood( mood )
+    }
 
-    //@Query( "UPDATE Mood SET text = mood.text WHERE time = mood.time" )
-    //fun setMoodEntry( mood: Mood) = viewModelScope.launch( Dispatchers.IO ){ dao.setMoodEntry( mood ) }
-    fun updateMood ( mood : Mood ) = viewModelScope.launch( Dispatchers.IO ){ dao.updateMood( mood ) }
+    fun updateMood(mood : Mood ) = viewModelScope.launch( Dispatchers.IO )
+    {
+        repo.updateMood( mood )
+    }
+
+    fun getMoodByTime( start : Long, end : Long ) = viewModelScope.launch( Dispatchers.IO )
+    {
+        repo.getMoodByTime( start, end )
+    }
 }

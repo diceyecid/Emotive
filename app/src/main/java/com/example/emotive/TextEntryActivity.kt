@@ -3,14 +3,8 @@ package com.example.emotive
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.activity_mood_data.*
 import kotlinx.android.synthetic.main.activity_text_entry.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class TextEntryActivity : AppCompatActivity() {
 
@@ -95,7 +89,7 @@ class TextEntryActivity : AppCompatActivity() {
             // save newMood to database
             if( newMood.text == null ){
                 newMood.text = inputText.text.toString()
-                viewModel.insert( newMood )
+                viewModel.insertMood( newMood )
 
                 val intent = Intent (this,
                     MainActivity::class.java)
