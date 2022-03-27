@@ -20,8 +20,8 @@ class MoodViewModel( app : Application ) : ViewModel()
         repo.updateMood( mood )
     }
 
-    fun getMoodByTime( start : Long, end : Long ) = viewModelScope.launch( Dispatchers.IO )
+    fun getMoodsByTime(start : Long, end : Long ) = viewModelScope.launch( Dispatchers.IO )
     {
-        repo.getMoodByTime( start, end )
+        repo.getMoodsByTime( start, end )
     }
 }

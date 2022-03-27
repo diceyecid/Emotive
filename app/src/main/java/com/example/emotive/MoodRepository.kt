@@ -1,6 +1,7 @@
 package com.example.emotive
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 class MoodRepository private constructor( app : Context )
@@ -24,16 +25,18 @@ class MoodRepository private constructor( app : Context )
         refreshMoods()
     }
 
-    fun getMoodByTime( start : Long, end : Long )
+    fun getMoodsByTime(start : Long, end : Long ) : List<Mood>
     {
         startTime = start
         endTime = end
-        refreshMoods()
+        return refreshMoods()
     }
 
-    private fun refreshMoods()
+    private fun refreshMoods() : List<Mood>
     {
-        moods.postValue( dao.getMoodByTime( startTime, endTime ) )
+        val newMoods = dao.getMoodsByTime( startTime, endTime )
+        moods.postValue( newMoods )
+        return newMoods
     }
 
 

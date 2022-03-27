@@ -23,4 +23,8 @@
     <string name="yesterday">Yesterday</string>
     <string name="MM_dd">%1$02d-%2$02d</string>
     <string name="yy_MM_dd">%1$04d-%2$02d-%3$02d</string>
+
+    <!-- Strings for mood reward text -->
+    <string name="daily_text_reward">Daily reward:\nmood with text</string>
+    <string name="daily_photo_reward">Daily reward:\nmood with photo</string>
 </resources>

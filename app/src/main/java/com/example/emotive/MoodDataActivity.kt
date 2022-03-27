@@ -31,8 +31,8 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         moodRecyclerView.layoutManager = LinearLayoutManager( this )
 
         // database interaction
-        moodViewModel = ViewModelProvider( this, MoodViewModelFactory( this.application ) ).get( MoodViewModel::class.java )
-        moodViewModel.getMoodByTime( getDayStart( cal ).timeInMillis, getDayEnd( cal ).timeInMillis )
+        moodViewModel = ViewModelProvider( this, MoodViewModelFactory( this.application ) )[MoodViewModel::class.java]
+        moodViewModel.getMoodsByTime( Utils.getDayStart( cal ).timeInMillis, Utils.getDayEnd( cal ).timeInMillis )
         moodViewModel.moods.observe( this, {
             moodRecyclerView.adapter = MoodRecyclerViewAdapter( it )
         } )
@@ -67,7 +67,7 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
         // otherwise set user calendar to the selected datetime and retrieve moods from database
         cal.set( year, month, day )
-        moodViewModel.getMoodByTime( getDayStart( cal ).timeInMillis, getDayEnd( cal ).timeInMillis )
+        moodViewModel.getMoodsByTime( Utils.getDayStart( cal ).timeInMillis, Utils.getDayEnd( cal ).timeInMillis )
 
         val yest = Calendar.getInstance()
         yest.add( Calendar.DATE, -1 )
@@ -97,33 +97,5 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         {
             viewDate.text = getString( R.string.yy_MM_dd, year, month+1, day )
         }
-    }
-
-
-    /********** Utilities **********/
-
-
-    // get start time of the day (00:00:00.000)
-    private fun getDayStart( day : Calendar ) : Calendar
-    {
-        val start = day.clone() as Calendar
-        start.set( Calendar.HOUR_OF_DAY, 0 )
-        start.set( Calendar.MINUTE, 0 )
-        start.set( Calendar.SECOND, 0 )
-        start.set( Calendar.MILLISECOND, 0 )
-
-        return start
-    }
-
-    // get end time of the day (23:59:59:999)
-    private fun getDayEnd( day : Calendar ) : Calendar
-    {
-        val end = day.clone() as Calendar
-        end.set( Calendar.HOUR_OF_DAY, 23 )
-        end.set( Calendar.MINUTE, 59 )
-        end.set( Calendar.SECOND, 59 )
-        end.set( Calendar.MILLISECOND, 999 )
-
-        return end
     }
 }

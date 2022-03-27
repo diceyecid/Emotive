@@ -19,7 +19,7 @@ interface AppDao
     fun getAllMoods() : LiveData<List<Mood>>
 
     @Query( "SELECT * FROM Mood WHERE time BETWEEN :start AND :end ORDER BY time DESC" )
-    fun getMoodByTime( start : Long, end : Long ) : List<Mood>
+    fun getMoodsByTime(start : Long, end : Long ) : List<Mood>
 
 
     /********** Reward **********/

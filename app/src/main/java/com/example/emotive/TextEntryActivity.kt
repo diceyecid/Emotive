@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +18,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_text_entry.*
+import java.util.*
 
 class TextEntryActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MoodViewModel
+    private lateinit var moodViewModel: MoodViewModel
+    private lateinit var rewardViewModel: RewardViewModel
     private lateinit var mood: Mood
 
     // camera permissions
@@ -35,44 +38,62 @@ class TextEntryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_text_entry)
 
         // initialize view model and get mood
-        viewModel = ViewModelProvider(this, MoodViewModelFactory(this.application))[MoodViewModel::class.java]
+        moodViewModel = ViewModelProvider(this, MoodViewModelFactory(this.application))[MoodViewModel::class.java]
+        rewardViewModel = ViewModelProvider(this, RewardViewModelFactory(this.application))[RewardViewModel::class.java]
         mood = intent.getSerializableExtra("mood") as Mood
         moodFace.setImageResource(mood.resource)
+        if (mood.text != null)
+            inputText.setText(mood.text)
+        if (mood.uri != null)
+            inputPhoto.setImageURI(mood.uri!!.toUri())
+
+
+        /********** click listeners **********/
+
 
         // back button
         tePrevImage.setOnClickListener {
             finish()
         }
 
-        // if there are already texts, display them
-        if (mood.text != null) inputText.setText(mood.text)
-
         // done button to save mood
         doneButtonImage.setOnClickListener {
             // save new mood to database
             if (mood.text == null) {
+                // save text
                 mood.text = inputText.text.toString()
-                viewModel.insertMood(mood)
+                moodViewModel.insertMood(mood)
 
+                // check and handout rewards
+                val now = Calendar.getInstance()
+                moodViewModel.getMoodsByTime( Utils.getDayStart( now ).timeInMillis, Utils.getDayEnd( now ).timeInMillis )
+                moodViewModel.moods.observe( this, {
+                    dailyTextReward( it )
+                    dailyPhotoReward( it )
+                } )
+
+                // navigate to back to main
                 val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
             }
             // save edited mood to database
             else {
                 mood.text = inputText.text.toString()
-                viewModel.updateMood(mood)
+                moodViewModel.updateMood(mood)
                 super.onBackPressed()
-
             }
         }
 
         //PHOTO PART
-        if (mood.uri != null) inputPhoto.setImageURI(mood.uri!!.toUri())
-
         takePhotoButton.setOnClickListener {
             checkCameraPermission()
         }
     }
+
+
+    /********** camera feature **********/
+
 
     private fun checkCameraPermission() {
         val camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -136,6 +157,30 @@ class TextEntryActivity : AppCompatActivity() {
         }
     }
 
+
+    /********** daily reward **********/
+
+
+    // Gain reward for the first mood report with text for the day
+    private fun dailyTextReward( moods : List<Mood> )
+    {
+        // if mood has text and all of the elements in moods does not have text
+        if( !mood.text.isNullOrBlank() && moods.all{ it.text.isNullOrBlank() } )
+        {
+            Log.d( "text reward", "hi" )
+            rewardViewModel.insertReward( Reward( getString( R.string.daily_text_reward ), 10 ) )
+        }
+    }
+
+    // Gain reward for the first mood report with photo for the day
+    private fun dailyPhotoReward( moods : List<Mood> )
+    {
+        // if mood has photo and all of the elements in moods does not have photo
+        if( !mood.uri.isNullOrBlank() && moods.all{ it.uri.isNullOrBlank() } )
+        {
+            rewardViewModel.insertReward( Reward( getString( R.string.daily_photo_reward ), 10 ) )
+        }
+    }
 }
 
 
