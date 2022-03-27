@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F3F5F7"
+    android:minWidth="270dp"
     android:orientation="vertical"
     app:circularflow_radiusInDP="20dp"
     app:layout_constraintCircleRadius="20dp"
