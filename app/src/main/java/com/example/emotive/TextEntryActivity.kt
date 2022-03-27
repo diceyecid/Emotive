@@ -9,7 +9,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +25,6 @@ class TextEntryActivity : AppCompatActivity() {
     private var readPermissionGranted = false
     private var writePermissionGranted = false
     private val cameraPermissionCode = 100
-    private val camaraResultCode = 101
     private var photoPathUri: Uri? = null
     private lateinit var mood: Mood
 
@@ -51,7 +49,7 @@ class TextEntryActivity : AppCompatActivity() {
         }
          */
 
-        viewModel = ViewModelProvider(this, MoodViewModelFactory(this.application)).get(MoodViewModel::class.java)
+        viewModel = ViewModelProvider(this, MoodViewModelFactory(this.application))[MoodViewModel::class.java]
 
         var newMood = intent.getSerializableExtra("mood") as Mood
         moodFace.setImageResource(newMood.resource)
@@ -169,7 +167,7 @@ class TextEntryActivity : AppCompatActivity() {
 
     private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
+            result.data
             inputPhoto.setImageURI(photoPathUri)
             inputPhoto.tag = photoPathUri.toString()
             mood.uri = photoPathUri.toString()
