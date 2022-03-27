@@ -22,7 +22,7 @@ class Converter
         return cal
     }
 
-    @TypeConverter fun UriToString(uri: Uri): String
+    @TypeConverter fun UriToString(uri: Uri?): String
     {
         return uri.toString()
     }

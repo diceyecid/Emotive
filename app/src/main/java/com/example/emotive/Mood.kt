@@ -25,8 +25,7 @@ data class Mood(
     @Ignore var inputTime: Calendar,
     @ColumnInfo (name ="value") val value: Int,
     @ColumnInfo (name = "text") var text: String?,
-    @Ignore
-    var inputUri: Uri?,
+    @ColumnInfo (name = "imageUri") var uri: String?,
 
     //@Ignore var imageList: ArrayList<Image>?
     ): Serializable
@@ -45,7 +44,7 @@ data class Mood(
     @TypeConverters( Converter::class )
     @ColumnInfo (name = "time") var time: Calendar = inputTime
     //@ColumnInfo (name = "time") var time: Calendar = Calendar.getInstance()
-    @TypeConverters( Converter::class ) @ColumnInfo (name = "imageUrl") var uri: Uri? = inputUri
+    //@TypeConverters( Converter::class ) @ColumnInfo (name = "imageUrl") var uri: Uri? = inputUri
 //    @ColumnInfo (name = "time") var time: Calendar = Calendar.getInstance()
 
 
