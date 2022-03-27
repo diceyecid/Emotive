@@ -2,6 +2,7 @@ package com.example.emotive
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -68,6 +69,7 @@ class UserData private constructor( app : Context )
     // write object to shared preferences
     private fun writeToSharePref( key : String, data : Any? )
     {
+//        Log.d( "write sp", "writing " + key )
         val json = gson.toJson( data )
         with( sharedPref.edit() )
         {
@@ -83,10 +85,18 @@ class UserData private constructor( app : Context )
     fun setPetals( amount : Int ) { basket = amount }
 
     // only append is allowed for unlocked items
-    fun unlockItem( item : Item ) { unlockedItems.add( item ) }
+    fun unlockItem( item : Item )
+    {
+        unlockedItems.add( item )
+        writeToSharePref( UNLOCKED_ITEMS, unlockedItems )
+    }
 
     // admin control: lock all items
-    fun lockAllItems(){ unlockedItems.clear() }
+    fun lockAllItems()
+    {
+        unlockedItems.clear()
+        writeToSharePref( UNLOCKED_ITEMS, unlockedItems )
+    }
 
 
     /********** get instance **********/
