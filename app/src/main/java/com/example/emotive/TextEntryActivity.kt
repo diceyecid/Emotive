@@ -58,19 +58,19 @@ class TextEntryActivity : AppCompatActivity() {
 
         // done button to save mood
         doneButtonImage.setOnClickListener {
+            // check and handout rewards
+            val now = Calendar.getInstance()
+            moodViewModel.getMoodsByTime( Utils.getDayStart( now ).timeInMillis, Utils.getDayEnd( now ).timeInMillis )
+            moodViewModel.moods.observe( this, {
+                dailyTextReward( it )
+                dailyPhotoReward( it )
+            } )
+
             // save new mood to database
             if (mood.text == null) {
                 // save text
                 mood.text = inputText.text.toString()
                 moodViewModel.insertMood(mood)
-
-                // check and handout rewards
-                val now = Calendar.getInstance()
-                moodViewModel.getMoodsByTime( Utils.getDayStart( now ).timeInMillis, Utils.getDayEnd( now ).timeInMillis )
-                moodViewModel.moods.observe( this, {
-                    dailyTextReward( it )
-                    dailyPhotoReward( it )
-                } )
 
                 // navigate to back to main
                 val intent = Intent(this, MainActivity::class.java)
@@ -167,8 +167,7 @@ class TextEntryActivity : AppCompatActivity() {
         // if mood has text and all of the elements in moods does not have text
         if( !mood.text.isNullOrBlank() && moods.all{ it.text.isNullOrBlank() } )
         {
-            Log.d( "text reward", "hi" )
-            rewardViewModel.insertReward( Reward( getString( R.string.daily_text_reward ), 10 ) )
+            rewardViewModel.insertReward( Reward( Reward.DAILY_TEXT ) )
         }
     }
 
@@ -178,7 +177,7 @@ class TextEntryActivity : AppCompatActivity() {
         // if mood has photo and all of the elements in moods does not have photo
         if( !mood.uri.isNullOrBlank() && moods.all{ it.uri.isNullOrBlank() } )
         {
-            rewardViewModel.insertReward( Reward( getString( R.string.daily_photo_reward ), 10 ) )
+            rewardViewModel.insertReward( Reward( Reward.DAILY_PHOTO ) )
         }
     }
 }
