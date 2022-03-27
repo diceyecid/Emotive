@@ -1,6 +1,7 @@
 package com.example.emotive
 
 import android.media.Image
+import android.net.Uri
 import androidx.room.*
 import java.io.Serializable
 import java.util.*
@@ -22,7 +23,10 @@ data class User (@ColumnInfo (name ="username") var username: String,
 data class Mood(
     @ColumnInfo (name ="value") val value: Int,
     @ColumnInfo (name = "text") var text: String?,
-    @Ignore var imageList: ArrayList<Image>?
+    @Ignore
+    var inputUri: Uri?,
+
+    //@Ignore var imageList: ArrayList<Image>?
     ): Serializable
 {
     /********** alternative constructors **********/
@@ -36,6 +40,7 @@ data class Mood(
     @PrimaryKey
     @TypeConverters( Converter::class )
     @ColumnInfo (name = "time") var time: Calendar = Calendar.getInstance()
+    @TypeConverters( Converter::class ) @ColumnInfo (name = "imageUrl") var uri: Uri? = inputUri
 
     // the drawable resource index
     @Ignore

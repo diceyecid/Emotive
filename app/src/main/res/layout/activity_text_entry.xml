@@ -36,10 +36,14 @@
 
         <ImageView
             android:id="@+id/doneButtonImage"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:adjustViewBounds="true"
+            android:maxWidth="500pt"
+            android:maxHeight="500pt"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/done_button" />
@@ -50,7 +54,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="33dp"
             android:layout_marginEnd="33dp"
-            android:layout_marginBottom="368dp"
+            android:layout_marginBottom="428dp"
             android:backgroundTint="#00FFFFFF"
             android:ems="10"
             android:hint="@string/text_entry_placeholder"
@@ -62,6 +66,29 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/inputPhoto"
+            android:layout_width="294dp"
+            android:layout_height="343dp"
+            android:layout_marginBottom="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputText"
+            app:layout_constraintVertical_bias="0.73"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
+
+        <Button
+            android:id="@+id/takePhotoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Photo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputPhoto" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,22 +1,33 @@
 package com.example.emotive
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.provider.MediaStore
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.android.synthetic.main.activity_mood_data.*
 import kotlinx.android.synthetic.main.activity_text_entry.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class TextEntryActivity : AppCompatActivity() {
 
     private lateinit var viewModel : MoodViewModel
+    private var cameraPermissionGranted = false
+    private var readPermissionGranted = false
+    private var writePermissionGranted = false
+    private val cameraPermissionCode = 100
+    private val camaraResultCode = 101
+    private var photoPathUri : Uri? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    @SuppressLint("QueryPermissionsNeeded") override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_entry)
         ////THIS IS SO THAT ON CLICK THE TEXT BOX CLEARS. THE PROBLEM IS THE KEYBOARD STAYS AFTER ENTER
@@ -128,5 +139,111 @@ class TextEntryActivity : AppCompatActivity() {
         }
 
          */
+
+
+        //PHOTO PART
+        if (newMood.uri != null)
+            inputPhoto.setImageURI(newMood.uri)
+
+        takePhotoButton.setOnClickListener{
+            checkCameraPermission()
+
+            if (newMood.uri == null)
+            {
+                val values = ContentValues(1)
+                values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+                photoPathUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoPathUri)
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                getResult.launch(intent)
+                newMood.uri = photoPathUri
+                //viewModel.insert(newMood)
+            }
+            else
+            {
+                newMood.uri = inputPhoto.tag as Uri?
+                //viewModel.updateMood(newMood)
+                super.onBackPressed()
+            }
+        }
+
+
+
     }
+    private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+    {   result ->
+        if (result.resultCode == Activity.RESULT_OK)
+        {
+            // There are no request codes
+            val data:Intent? = result.data
+            inputPhoto.setImageURI(photoPathUri)
+            inputPhoto.tag = photoPathUri.toString()
+        }
+    }
+    private fun checkCameraPermission()
+    {
+        val camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA )
+        val read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE )
+        val write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE )
+        if (camera == PackageManager.PERMISSION_GRANTED && read == PackageManager.PERMISSION_GRANTED && write == PackageManager.PERMISSION_GRANTED)
+        {
+            cameraPermissionGranted = true
+            readPermissionGranted = true
+            writePermissionGranted = true
+        }
+        else
+            makeRequest()
+    }
+
+    //Request for the camera permission
+    private fun makeRequest()
+    {
+        val camera = Manifest.permission.CAMERA
+        val read = Manifest.permission.READ_EXTERNAL_STORAGE
+        val write = Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ActivityCompat.requestPermissions(this,
+                                          arrayOf(camera,read,write),
+                                          cameraPermissionCode)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == cameraPermissionCode)
+        {
+            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                cameraPermissionGranted = true
+                readPermissionGranted = true
+                writePermissionGranted = true
+            }
+            else
+                Toast.makeText(this, "No Permission", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
