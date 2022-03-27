@@ -34,7 +34,7 @@ class ShopActivity : AppCompatActivity() {
         val dcSamples = loadSampleData()
 
         //itemRecyclerView.layoutManager = LinearLayoutManager(this)
-        dcRecyclerView.adapter = ItemRecyclerViewAdapter(dcSamples)
+        dcRecyclerView.adapter = ItemRecyclerViewAdapter(dcSamples, applicationContext)
 
         val avRecycler = findViewById<RecyclerView>(R.id.bgRecyclerView)
 
@@ -43,7 +43,7 @@ class ShopActivity : AppCompatActivity() {
         val avSamples = loadSampleData2()
 
         //itemRecyclerView.layoutManager = LinearLayoutManager(this)
-        avRecyclerView.adapter = ItemRecyclerViewAdapter(avSamples)
+        avRecyclerView.adapter = ItemRecyclerViewAdapter(avSamples, applicationContext)
 
         val bgRecycler = findViewById<RecyclerView>(R.id.bgRecyclerView)
 
@@ -52,7 +52,7 @@ class ShopActivity : AppCompatActivity() {
         val bgSamples = loadSampleData3()
 
         //itemRecyclerView.layoutManager = LinearLayoutManager(this)
-        bgRecyclerView.adapter = ItemRecyclerViewAdapter(bgSamples)
+        bgRecyclerView.adapter = ItemRecyclerViewAdapter(bgSamples, applicationContext)
 
         /*
         button.setOnClickListener {
@@ -69,27 +69,26 @@ class ShopActivity : AppCompatActivity() {
     }
     private fun loadSampleData(): ArrayList<Item> {
         val moodList: ArrayList<Item> = ArrayList<Item>()
-        moodList.add( Item(0, 25,"@drawable/item_button", 0 ) )
-        moodList.add(  Item(0, 22,"@drawable/item_button", 1 ) )
-        moodList.add(  Item(0, 23,"@drawable/item_button", 2 )  )
+        moodList.add( Item(0, 25,"@drawable/decor_butterfly", 0 ) )
+        moodList.add(  Item(0, 22,"@drawable/decor_santa_hat", 1 ) )
+        moodList.add(  Item(0, 23,"@drawable/decor_tennis", 2 )  )
 
         return moodList
     }
 
     private fun loadSampleData2(): ArrayList<Item> {
         val moodList: ArrayList<Item> = ArrayList<Item>()
-        moodList.add( Item(1, 35,"@drawable/item_button", 3 ) )
-        moodList.add(  Item(1, 32,"@drawable/item_button", 4 ) )
-        moodList.add(  Item(1, 33,"@drawable/item_button", 5 )  )
+        moodList.add( Item(1, 35,"@drawable/ava_fox", 3 ) )
+        moodList.add(  Item(1, 32,"@drawable/ava_owl", 4 ) )
+        moodList.add(  Item(1, 33,"@drawable/ava_red_panda", 5 )  )
 
         return moodList
     }
 
     private fun loadSampleData3(): ArrayList<Item> {
         val moodList: ArrayList<Item> = ArrayList<Item>()
-        moodList.add( Item(2, 45,"@drawable/item_button", 6 ) )
-        moodList.add(  Item(2, 42,"@drawable/item_button", 7 ) )
-        moodList.add(  Item(2, 43,"@drawable/item_button", 8 )  )
+        moodList.add( Item(2, 45,"@drawable/bg_forest", 6 ) )
+        moodList.add(  Item(2, 42,"@drawable/bg_sunset_field", 7 ) )
 
         return moodList
     }

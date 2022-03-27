@@ -141,7 +141,7 @@
                 android:layout_height="120dp"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toTopOf="@+id/guideline5">
+                app:layout_constraintTop_toTopOf="@+id/guideline4">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -172,7 +172,7 @@
                 android:layout_height="120dp"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toTopOf="@+id/guideline4">
+                app:layout_constraintTop_toTopOf="@+id/guideline5">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
