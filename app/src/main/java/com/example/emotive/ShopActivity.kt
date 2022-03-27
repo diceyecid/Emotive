@@ -23,7 +23,24 @@ class ShopActivity : AppCompatActivity() {
         //val jsonFileString = gson.toJson( "store.json" )
         //var list = arrayListOf<User>()
 
+        val dcSamples: ArrayList<Item> = ArrayList<Item>()
+        val avSamples: ArrayList<Item> = ArrayList<Item>()
+        val bgSamples: ArrayList<Item> = ArrayList<Item>()
+
         var userList = gson.fromJson(jsonFileString, Array<Item>::class.java).asList()
+        //val length =userList.size()
+        for (item in 0 until userList.size) {
+            if(userList.get(item).type == 0){
+                dcSamples.add( Item(0, userList[item].price, userList[item].path , userList[item].uid ) )
+            }
+            else if(userList.get(item).type == 1){
+                avSamples.add( Item(1, userList[item].price, userList[item].path , userList[item].uid ) )
+            }
+            else if(userList.get(item).type == 2){
+                bgSamples.add( Item(2, userList[item].price, userList[item].path , userList[item].uid ) )
+            }
+        }
+
 
         //NEW
 
@@ -31,16 +48,16 @@ class ShopActivity : AppCompatActivity() {
 
         //setting recycler to horizontal scroll
         dcRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val dcSamples = loadSampleData()
+        //val dcSamples = loadSampleData()
 
         //itemRecyclerView.layoutManager = LinearLayoutManager(this)
         dcRecyclerView.adapter = ItemRecyclerViewAdapter(dcSamples, applicationContext)
 
-        val avRecycler = findViewById<RecyclerView>(R.id.bgRecyclerView)
+        //val avRecycler = findViewById<RecyclerView>(R.id.bgRecyclerView)
 
         //setting recycler to horizontal scroll
         avRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val avSamples = loadSampleData2()
+        //val avSamples = loadSampleData2()
 
         //itemRecyclerView.layoutManager = LinearLayoutManager(this)
         avRecyclerView.adapter = ItemRecyclerViewAdapter(avSamples, applicationContext)
@@ -49,7 +66,7 @@ class ShopActivity : AppCompatActivity() {
 
         //setting recycler to horizontal scroll
         bgRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val bgSamples = loadSampleData3()
+        //val bgSamples = loadSampleData3()
 
         //itemRecyclerView.layoutManager = LinearLayoutManager(this)
         bgRecyclerView.adapter = ItemRecyclerViewAdapter(bgSamples, applicationContext)
@@ -60,7 +77,7 @@ class ShopActivity : AppCompatActivity() {
             textView.text= userList.get(0).name
         }
          */
-        petalTextView.text = userList.get(0).path
+        //petalTextView.text = userList.get(0).path
         //petalTextView.text = intent.getStringExtra("petalNum")
 
         mrPrevImage.setOnClickListener {
