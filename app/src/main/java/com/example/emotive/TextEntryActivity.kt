@@ -21,134 +21,74 @@ import kotlinx.android.synthetic.main.activity_text_entry.*
 class TextEntryActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MoodViewModel
+    private lateinit var mood: Mood
+
+    // camera permissions
     private var cameraPermissionGranted = false
     private var readPermissionGranted = false
     private var writePermissionGranted = false
     private val cameraPermissionCode = 100
     private var photoPathUri: Uri? = null
-    private lateinit var mood: Mood
 
     @SuppressLint("QueryPermissionsNeeded") override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_entry)
-        ////THIS IS SO THAT ON CLICK THE TEXT BOX CLEARS. THE PROBLEM IS THE KEYBOARD STAYS AFTER ENTER
-        ////WE MAY HAVE TO HAVE THE INPUT TEXT AND QUESTION TEXT SEPARATE
-        /*
-        inputText.setOnClickListener{
-            if (inputText.getText().toString() == "Anything You Want To Share?"){
-                inputText.getText().clear()
-            }
-        }
-        */
 
-        ///THIS DIDN'T WORK BUT I'M ARCHIVING IT
-        /*
-        inputText.setOnKeyListener { view, i, keyEvent ->
-            val myText = inputText.text
-            false
-        }
-         */
-
+        // initialize view model and get mood
         viewModel = ViewModelProvider(this, MoodViewModelFactory(this.application))[MoodViewModel::class.java]
+        mood = intent.getSerializableExtra("mood") as Mood
+        moodFace.setImageResource(mood.resource)
 
-        var newMood = intent.getSerializableExtra("mood") as Mood
-        moodFace.setImageResource(newMood.resource)
-        mood = newMood
-
-
-//        when(newFace){
-//            "1" -> {
-//                moodFace.setImageResource(R.drawable.tier01)
-//                println("This is 2")
-//            }
-//
-//            "2" -> {
-//                moodFace.setImageResource(R.drawable.tier02)
-//                println("When x is any number from 3,4,5,6,7,8")
-//            }
-//            "3" -> {
-//                moodFace.setImageResource(R.drawable.tier03)
-//                println("When x is any number from 3,4,5,6,7,8")
-//            }
-//            "4" -> {
-//                moodFace.setImageResource(R.drawable.tier04)
-//                println("When x is any number from 3,4,5,6,7,8")
-//            }
-//            "5" -> {
-//                moodFace.setImageResource(R.drawable.tier05)
-//                println("When x is any number from 3,4,5,6,7,8")
-//            }
-//            else -> {
-//                println("Error")
-//            }
-//
-//        }
-
+        // back button
         tePrevImage.setOnClickListener {
             finish()
         }
-        /*
+
+        // if there are already texts, display them
+        if (mood.text != null) inputText.setText(mood.text)
+
+        // done button to save mood
         doneButtonImage.setOnClickListener {
-            // save newMood to database
-            newMood.text = inputText.text.toString()
-            viewModel.insert( newMood )
-
-            val intent = Intent (this,
-                MainActivity::class.java)
-            startActivity(intent)
-        }
-
-         */
-
-        if (newMood.text != null) inputText.setText(newMood.text)
-
-
-        doneButtonImage.setOnClickListener {
-            // save newMood to database
-            if (newMood.text == null) {
-                newMood.text = inputText.text.toString()
-                viewModel.insertMood(newMood)
+            // save new mood to database
+            if (mood.text == null) {
+                mood.text = inputText.text.toString()
+                viewModel.insertMood(mood)
 
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
+            // save edited mood to database
             else {
-                newMood.text = inputText.text.toString()
-                viewModel.updateMood(newMood)
+                mood.text = inputText.text.toString()
+                viewModel.updateMood(mood)
                 super.onBackPressed()
 
             }
         }
-        /*
-        // if it's a mood entry edit
-        if( newMood.text !== null )
-        {
-            // display text
-            if( newMood.text != null )
-                inputText.setText( newMood.text )
-
-            // overwrite done button listener
-            doneButtonImage.setOnClickListener {
-                // save newMood to database
-                //newMood.text = inputText.text.toString()
-                //viewModel.setMoodEntry( newMood )
-                //viewModel.updateMood(newMood)
-                //super.onBackPressed()
-                //finish()
-            }
-        }
-
-         */
-
 
         //PHOTO PART
-        if (newMood.uri != null) inputPhoto.setImageURI(newMood.uri!!.toUri())
+        if (mood.uri != null) inputPhoto.setImageURI(mood.uri!!.toUri())
 
         takePhotoButton.setOnClickListener {
             checkCameraPermission()
-            newMood = mood
         }
+    }
 
+    private fun checkCameraPermission() {
+        val camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+        val read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+        val write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (camera == PackageManager.PERMISSION_GRANTED && read == PackageManager.PERMISSION_GRANTED && write == PackageManager.PERMISSION_GRANTED) {
+            //Log.d("CHECK CAMERA", "if")
+            cameraPermissionGranted = true
+            readPermissionGranted = true
+            writePermissionGranted = true
+            takePhoto()
+        }
+        else {
+            //Log.d("CHECK CAMERA", "else")
+            makeRequest()
+        }
     }
 
     private fun takePhoto() {
@@ -172,23 +112,6 @@ class TextEntryActivity : AppCompatActivity() {
             inputPhoto.tag = photoPathUri.toString()
             mood.uri = photoPathUri.toString()
 
-        }
-    }
-
-    private fun checkCameraPermission() {
-        val camera = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-        val read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-        val write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        if (camera == PackageManager.PERMISSION_GRANTED && read == PackageManager.PERMISSION_GRANTED && write == PackageManager.PERMISSION_GRANTED) {
-            //Log.d("CHECK CAMERA", "if")
-            cameraPermissionGranted = true
-            readPermissionGranted = true
-            writePermissionGranted = true
-            takePhoto()
-        }
-        else {
-            //Log.d("CHECK CAMERA", "else")
-            makeRequest()
         }
     }
 
