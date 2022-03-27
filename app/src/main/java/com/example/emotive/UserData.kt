@@ -25,7 +25,7 @@ class UserData private constructor( app : Context )
 
 
     // fetch data from shared preferences upon initialization
-    var basket : Int = sharedPref.getInt( BASKET, 0 )
+    var basket : Int = sharedPref.getInt( BASKET, 50 )
         private set( amount )
         {
             field = amount
@@ -66,7 +66,7 @@ class UserData private constructor( app : Context )
 
 
     // write object to shared preferences
-    fun writeToSharePref( key : String, data : Any? )
+    private fun writeToSharePref( key : String, data : Any? )
     {
         val json = gson.toJson( data )
         with( sharedPref.edit() )
@@ -81,7 +81,10 @@ class UserData private constructor( app : Context )
     fun removePetals( amount : Int ) { basket -= amount }
 
     // only append is allowed for unlocked items
-    fun UnlockedItem( item : Item ) { unlockedItems.add( item ) }
+    fun unlockItem( item : Item ) { unlockedItems.add( item ) }
+
+    // admin control: lock all items
+    fun lockAllItems(){ unlockedItems.clear() }
 
 
     /********** get instance **********/
