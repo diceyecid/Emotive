@@ -10,7 +10,10 @@ class MoodReportActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mood_report)
         mrPrevImage.setOnClickListener {
-            finish()
+            //finish()
+            val intent = Intent (this,
+                MainActivity::class.java)
+            startActivity(intent)
         }
 
         face1Image.setOnClickListener {

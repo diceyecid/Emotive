@@ -12,6 +12,8 @@
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.4101851851851852" />
         <entry key="app/src/main/res/layout/activity_data_main.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_data_shop.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_first.xml" value="0.15443840579710144" />
+        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19" />
         <entry key="app/src/main/res/layout/activity_mood_data.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_mood_report.xml" value="0.2" />
