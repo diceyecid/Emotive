@@ -20,19 +20,19 @@
             android:layout_height="900dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.928"
             app:srcCompat="@drawable/bg_forest" />
 
         <ImageView
             android:id="@+id/petalImage"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -64,8 +64,8 @@
 
         <ImageView
             android:id="@+id/shopImage"
-            android:layout_width="28dp"
-            android:layout_height="30dp"
+            android:layout_width="45dp"
+            android:layout_height="51dp"
             android:layout_marginStart="362dp"
             android:layout_marginTop="80dp"
             android:layout_marginEnd="20dp"
@@ -77,8 +77,8 @@
 
         <ImageView
             android:id="@+id/userImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="42dp"
             android:layout_marginStart="362dp"
             android:layout_marginTop="80dp"
             android:layout_marginEnd="20dp"
@@ -120,12 +120,61 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/shopImage"
-            app:layout_constraintHorizontal_bias="0.255"
+            app:layout_constraintHorizontal_bias="0.348"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.323"
+            app:layout_constraintVertical_bias="0.165"
             app:srcCompat="@drawable/mood_trigger" />
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="38dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="608dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/imageempty" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="312dp"
+            android:layout_marginTop="648dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/imageempty" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="28dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="232dp"
+            android:layout_marginTop="544dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/imageempty" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="320dp"
+            android:layout_marginTop="480dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/imageempty" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="46dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="512dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/imageempty" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

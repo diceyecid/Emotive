@@ -6,6 +6,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.os.Handler
+import android.util.DisplayMetrics
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -63,9 +66,55 @@ class MainActivity : AppCompatActivity() {
 
 
         // get petal amount
-        userData.liveBasket.observe( this, {
+        userData.liveBasket.observe( this) {
             petalText.text = it.toString()
-        } )
+        }
+
+        val handler = Handler()
+
+        var petalCount = 0
+        val inactiveImageArr = arrayListOf(
+            imageView3,
+            imageView4,
+            imageView5,
+            imageView6,
+            imageView7,
+        )
+        val activeImageArr = arrayListOf<ImageView>()
+
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                //Call your function here
+                println(inactiveImageArr)
+                if(inactiveImageArr.size > 0) {
+                    val displayMetrics = DisplayMetrics()
+                    windowManager.defaultDisplay.getMetrics(displayMetrics)
+                    val height = displayMetrics.heightPixels
+                    val width = displayMetrics.widthPixels
+
+                    val randomX  = (0 until width - 10).random()
+                    val randomY = ((height/1.5).toInt() until height - 10).random()
+                    val targetImageView = inactiveImageArr[0]
+                    targetImageView.setImageResource(R.drawable.petal)
+
+                    targetImageView.setRotation((0 until 360).random().toFloat())
+                    targetImageView.setX(randomX.toFloat())
+                    targetImageView.setY(randomY.toFloat())
+
+                    activeImageArr.add(targetImageView)
+                    inactiveImageArr.removeAt(0)
+                    targetImageView.setOnClickListener{
+                        targetImageView.setImageResource(R.drawable.imageempty)
+                        inactiveImageArr.add(targetImageView)
+                        val targetIndex = activeImageArr.indexOf(targetImageView)
+                        activeImageArr.removeAt(targetIndex)
+                        userData.addPetals((1 until 5).random())
+                    }
+                    petalCount += 1
+                }
+                handler.postDelayed(this, 2000)//1 sec delay
+            }
+        }, 2000)
 
         // navigates to mood report
         triggerImage.setOnClickListener {
@@ -104,7 +153,7 @@ class MainActivity : AppCompatActivity() {
             customdialog.setContentView(R.layout.alert_reward_gain)
             customdialog.show()
 
-            val rewardViewModel : RewardViewModel =
+            var rewardViewModel : RewardViewModel =
                 ViewModelProvider(this, RewardViewModelFactory(this.application)).get( RewardViewModel::class.java )
 
             // rewardViewModel.insertReward( Reward( "test", 10 ) )
@@ -114,8 +163,26 @@ class MainActivity : AppCompatActivity() {
                 customdialog.rewardRecyclerView.layoutManager = LinearLayoutManager( this )
                 customdialog.rewardRecyclerView.adapter = RewardRecyclerViewAdapter( it, rewardViewModel )
             } )
+
+            /*
+            customdialog.textView1.setOnClickListener{
+                customdialog.dismiss()
+            }
+            */
+
+            //OLD
+            /*
+            val customdialog = Dialog(this )
+            customdialog.setContentView(R.layout.activity_reward_gain)
+            customdialog.show()
+
+             */
         }
+
+
+
     }
+
 }
 
 
