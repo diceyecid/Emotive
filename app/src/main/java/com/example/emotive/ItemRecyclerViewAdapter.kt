@@ -10,12 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.shop_card.view.*
 
 
 class ItemRecyclerViewAdapter(private val itemList: List<Item>,val context: Context): RecyclerView.Adapter<ItemRecyclerViewAdapter.ItemHolder>()  {
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //val rewardIcon: ImageView = rewardView.findViewById(R.id.rewardIcon)
         val price: TextView = itemView.findViewById(R.id.price)
+        val petal: ImageView = itemView.findViewById( R.id.petal )
         val image: ImageView = itemView.findViewById(R.id.imageView)
         val lock: ImageView = itemView.findViewById(R.id.imageView2)
 
@@ -32,17 +34,18 @@ class ItemRecyclerViewAdapter(private val itemList: List<Item>,val context: Cont
     override fun onBindViewHolder(holder: ItemHolder, pos: Int) {
         //holder.rewardIcon.setImageResource(itemList[pos].resource)
         var user = UserData.getInstance(context)
-        var unlocked : Int = 0
+        var unlocked : Boolean = false
         if(user.unlockedItems.size!=0){
             for( item in 0 until user.unlockedItems.size){
                 if(itemList[pos].uid==user.unlockedItems[item].uid){
-                    unlocked=1
+                    unlocked=true
                 }
             }
         }
-        if(unlocked==1){
+        if(unlocked){
             holder.lock.setImageResource(R.drawable.empty_icon)
             holder.price.text = ""
+            holder.petal.setImageResource(R.drawable.empty_icon)
         }
         else{
             holder.lock.setImageResource(R.drawable.lock_icon)
@@ -58,7 +61,8 @@ class ItemRecyclerViewAdapter(private val itemList: List<Item>,val context: Cont
         holder.image.setOnClickListener {
             val toastText : String
 
-            if( itemList[pos].price <= user.liveBasket.value!! )
+            // if it's unlocked or user has enough money
+            if( unlocked || itemList[pos].price <= user.liveBasket.value!! )
             {
                 claimReward(it, itemList[pos], unlocked)
                 toastText = itemList[pos].typeName + " successfully changed"
@@ -75,10 +79,10 @@ class ItemRecyclerViewAdapter(private val itemList: List<Item>,val context: Cont
 
     override fun getItemCount() = itemList.size
 
-    private fun claimReward(view: View, item: Item, lock: Int) {
+    private fun claimReward(view: View, item: Item, unlock: Boolean) {
 
         var user = UserData.getInstance(context)
-        if (lock==0){
+        if (!unlock){
             user.removePetals(item.price)
             user.unlockItem(item)
         }
