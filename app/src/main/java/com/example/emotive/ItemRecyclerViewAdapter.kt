@@ -43,7 +43,18 @@ class ItemRecyclerViewAdapter(private val itemList: List<Item>,val context: Cont
             }
         }
         if(unlocked){
-            holder.lock.setImageResource(R.drawable.empty_icon)
+            if( user.avatar?.uid == itemList[pos].uid ||
+                user.background?.uid == itemList[pos].uid ||
+                user.decoration?.uid == itemList[pos].uid
+            )
+            {
+                holder.lock.setImageResource(R.drawable.ic_check)
+            }
+            else
+            {
+                holder.lock.setImageResource(R.drawable.empty_icon)
+            }
+
             holder.price.text = ""
             holder.petal.setImageResource(R.drawable.empty_icon)
         }
