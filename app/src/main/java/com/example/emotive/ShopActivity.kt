@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_mood_report.*
 import kotlinx.android.synthetic.main.activity_mood_report.mrPrevImage
 import kotlinx.android.synthetic.main.activity_shop.*
 import kotlinx.android.synthetic.main.activity_data_shop.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_shop.petalTextView
 
 class ShopActivity : AppCompatActivity() {
@@ -21,7 +22,10 @@ class ShopActivity : AppCompatActivity() {
         var gson : Gson = Gson()
 
         var user = UserData.getInstance(this)
-        petalTextView.text = user.basket.toString()
+        user.liveBasket.observe( this, {
+            petalTextView.text = it.toString()
+        } )
+//        petalTextView.text = user.basket.toString()
         //val jsonFileString = gson.toJson( "store.json" )
         //var list = arrayListOf<User>()
 

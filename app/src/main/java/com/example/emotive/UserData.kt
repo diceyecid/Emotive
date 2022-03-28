@@ -3,8 +3,11 @@ package com.example.emotive
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.util.*
+import kotlin.collections.ArrayList
 
 // constants for shared preferences key name
 private const val APP_NAME : String = "emotive"
@@ -26,10 +29,11 @@ class UserData private constructor( app : Context )
 
 
     // fetch data from shared preferences upon initialization
-    var basket : Int = sharedPref.getInt( BASKET, 50 )
-        private set( amount )
+    private var basket : Int = sharedPref.getInt( BASKET, 50 )
+        set( amount )
         {
             field = amount
+            liveBasket.postValue( field )
             with( sharedPref.edit() )
             {
                 putInt( BASKET, field )
@@ -61,6 +65,12 @@ class UserData private constructor( app : Context )
             field = items
             writeToSharePref( UNLOCKED_ITEMS, field )
         }
+
+
+    /********** live data **********/
+
+
+    var liveBasket : MutableLiveData<Int> = MutableLiveData( basket )
 
 
     /********** setters **********/

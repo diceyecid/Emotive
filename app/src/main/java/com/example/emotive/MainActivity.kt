@@ -1,5 +1,6 @@
 package com.example.emotive
 
+import android.app.Application
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -58,7 +59,9 @@ class MainActivity : AppCompatActivity() {
 
 
         // get petal amount
-        petalText.text = userData.basket.toString()
+        userData.liveBasket.observe( this, {
+            petalText.text = it.toString()
+        } )
 
         // navigates to mood report
         triggerImage.setOnClickListener {
@@ -98,7 +101,7 @@ class MainActivity : AppCompatActivity() {
             customdialog.setContentView(R.layout.alert_reward_gain)
             customdialog.show()
 
-            var rewardViewModel : RewardViewModel =
+            val rewardViewModel : RewardViewModel =
                 ViewModelProvider(this, RewardViewModelFactory(this.application)).get( RewardViewModel::class.java )
 
             // rewardViewModel.insertReward( Reward( "test", 10 ) )
@@ -106,7 +109,7 @@ class MainActivity : AppCompatActivity() {
             //TODO THIS
             rewardViewModel.allRewards.observe( this, Observer{
                 customdialog.rewardRecyclerView.layoutManager = LinearLayoutManager( this )
-                customdialog.rewardRecyclerView.adapter = RewardRecyclerViewAdapter( it )
+                customdialog.rewardRecyclerView.adapter = RewardRecyclerViewAdapter( it, rewardViewModel )
             } )
 
             /*

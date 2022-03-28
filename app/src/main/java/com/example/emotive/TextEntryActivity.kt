@@ -60,8 +60,8 @@ class TextEntryActivity : AppCompatActivity() {
         doneButtonImage.setOnClickListener {
             // check and handout rewards
             val now = Calendar.getInstance()
-            moodViewModel.getMoodsByTime( Utils.getDayStart( now ).timeInMillis, Utils.getDayEnd( now ).timeInMillis )
             moodViewModel.moods.observe( this, {
+                moodViewModel.getMoodsByTime( Utils.getDayStart( now ).timeInMillis, Utils.getDayEnd( now ).timeInMillis )
                 dailyTextReward( it )
                 dailyPhotoReward( it )
             } )
