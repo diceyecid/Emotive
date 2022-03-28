@@ -10,7 +10,7 @@ class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
-
+        Utils.hideSystemBars( window )
         arrowButton.setOnClickListener {
             val intent = Intent (this,
                 FirstActivity::class.java)

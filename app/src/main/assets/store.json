@@ -37,7 +37,7 @@
   },
   {
     "type": 2,
-    "price": 40,
+    "price": 80,
     "path": "@drawable/bg_forest",
     "uid": 6
   },

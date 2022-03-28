@@ -13,6 +13,8 @@
         <entry key="app/src/main/res/drawable/ic_petal.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/sunset_farm.xml" value="0.34444444444444444" />
         <entry key="app/src/main/res/layout/activity_data_shop.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_first.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_intro.xml" value="0.23958333333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2199575427139536" />
         <entry key="app/src/main/res/layout/activity_mood_data.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_mood_report.xml" value="0.2958477508650519" />
