@@ -23,21 +23,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Utils.hideSystemBars( window )
 
         var userData = UserData.getInstance( this )
         //userData.setPetals(50)
         //userData.lockAllItems()
         Log.d("unlock",userData.unlockedItems.size.toString())
         if(userData.unlockedItems.size==0){
-            intent = Intent (this,
-                IntroActivity::class.java)
-            startActivity( intent )
-            /*
             userData.unlockItem(Item(1,30, "@drawable/ava_fox", 3 ))
             userData.avatar=Item(1,30, "@drawable/ava_fox", 3 )
             userData.background=Item(-1,0, "@drawable/empty_icon", -1 )
             userData.decoration=Item(-1,0, "@drawable/empty_icon", -1 )
-            */
+            intent = Intent (this,
+                IntroActivity::class.java)
+            startActivity( intent )
         }
 
 
