@@ -1,49 +1,49 @@
 [
   {
     "type": 0,
-    "price": 21,
+    "price": 60,
     "path": "@drawable/decor_butterfly",
     "uid": 0
   },
   {
     "type": 0,
-    "price": 22,
+    "price": 65,
     "path": "@drawable/decor_santa_hat",
     "uid": 1
   },
   {
     "type": 0,
-    "price": 23,
+    "price": 55,
     "path": "@drawable/decor_tennis",
     "uid": 2
   },
   {
     "type": 1,
-    "price": 30,
+    "price": 0,
     "path": "@drawable/ava_fox",
     "uid": 3
   },
   {
     "type": 1,
-    "price": 31,
+    "price": 120,
     "path": "@drawable/ava_owl",
     "uid": 4
   },
   {
     "type": 1,
-    "price": 32,
+    "price": 150,
     "path": "@drawable/ava_red_panda",
     "uid": 5
   },
   {
     "type": 2,
-    "price": 40,
+    "price": 80,
     "path": "@drawable/bg_forest",
     "uid": 6
   },
   {
     "type": 2,
-    "price": 41,
+    "price": 110,
     "path": "@drawable/bg_sunset_field",
     "uid": 7
   }

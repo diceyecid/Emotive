@@ -4,6 +4,7 @@ package com.example.emotive
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,7 +56,20 @@ class ItemRecyclerViewAdapter(private val itemList: List<Item>,val context: Cont
         holder.image.setImageResource(drawableId)
         //holder.imageButton.text = 'x' + itemList[pos].petal.toString()
         holder.image.setOnClickListener {
-                v -> claimReward(v, itemList[pos], unlocked)
+            val toastText : String
+
+            if( itemList[pos].price <= user.liveBasket.value!! )
+            {
+                claimReward(it, itemList[pos], unlocked)
+                toastText = itemList[pos].typeName + " successfully changed"
+            }
+            else
+            {
+                toastText = "You do not have enough petals"
+            }
+
+            // pop toast for feedback
+            Toast.makeText( context, toastText, Toast.LENGTH_SHORT ).show()
         }
     }
 
