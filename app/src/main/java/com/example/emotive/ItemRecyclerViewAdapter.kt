@@ -95,6 +95,7 @@ class ItemRecyclerViewAdapter(private val itemList: List<Item>,val context: Cont
 
         val intent = Intent( view.context, MainActivity::class.java )
         //intent.putExtra( "item", item )
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         view.context.startActivity( intent )
     }
 }
