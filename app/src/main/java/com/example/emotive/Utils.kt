@@ -1,6 +1,12 @@
 package com.example.emotive
 
 import android.content.Context
+import android.view.Window
+import android.view.WindowManager
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import java.io.IOException
 import java.util.*
 
@@ -82,4 +88,16 @@ object Utils {
 
         return end
     }
+
+
+    /********** app config **********/
+
+
+    fun hideSystemBars( window : Window)
+    {
+        val windowInsetsController = ViewCompat.getWindowInsetsController( window.decorView ) ?: return
+        windowInsetsController.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        windowInsetsController.hide( WindowInsetsCompat.Type.systemBars() )
+    }
+
 }

@@ -36,6 +36,7 @@ class TextEntryActivity : AppCompatActivity() {
     @SuppressLint("QueryPermissionsNeeded") override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_entry)
+        Utils.hideSystemBars( window )
 
         // initialize view model and get mood
         moodViewModel = ViewModelProvider(this, MoodViewModelFactory(this.application))[MoodViewModel::class.java]

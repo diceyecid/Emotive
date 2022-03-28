@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        Utils.hideSystemBars( window )
+        Utils.hideSystemBars( window )
 
         var userData = UserData.getInstance( this )
         //userData.setPetals(50)

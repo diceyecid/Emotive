@@ -17,6 +17,7 @@ class ShopActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_shop)
         setContentView(R.layout.activity_data_shop)
+        Utils.hideSystemBars( window )
 
         var jsonFileString = Utils.getJsonFromAssets(getApplicationContext(), "store.json")
         var gson : Gson = Gson()

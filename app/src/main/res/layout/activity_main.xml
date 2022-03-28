@@ -2,11 +2,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/ThemeOverlay.Emotive.FullscreenContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="?attr/fullscreenBackgroundColor"
+    android:fitsSystemWindows="false"
+    android:theme="@style/ThemeOverlay.Emotive.FullscreenContainer"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout

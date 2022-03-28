@@ -9,6 +9,7 @@ class MoodReportActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mood_report)
+        Utils.hideSystemBars( window )
         mrPrevImage.setOnClickListener {
             //finish()
             val intent = Intent (this,

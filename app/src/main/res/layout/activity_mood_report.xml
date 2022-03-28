@@ -38,14 +38,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/mrPrevImage"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_marginTop="20dp"
+            android:background="#01FFFFFF"
+            android:contentDescription="@string/previous"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/prev_page" />
+            app:srcCompat="@drawable/ic_arrow_left" />
 
         <ImageView
             android:id="@+id/face3Image"

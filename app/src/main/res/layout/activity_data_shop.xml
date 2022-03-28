@@ -12,8 +12,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="700dp"
-        android:layout_marginTop="25dp">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,20 +30,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="100dp" />
+                app:layout_constraintGuide_begin="110dp" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/mrPrevImage"
-                android:layout_width="43dp"
-                android:layout_height="60dp"
-                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="#00FFFFFF"
+                android:contentDescription="@string/previous"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline"
-                app:srcCompat="@drawable/prev_page" />
+                app:srcCompat="@drawable/ic_arrow_left" />
 
             <TextView
                 android:id="@+id/storeTextView"
                 android:layout_width="120dp"
                 android:layout_height="60dp"
+                android:gravity="center"
                 android:text="Store"
                 android:textAlignment="center"
                 android:textSize="34sp"
@@ -95,14 +99,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="280dp" />
+                app:layout_constraintGuide_begin="290dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="470dp" />
+                app:layout_constraintGuide_begin="480dp" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"

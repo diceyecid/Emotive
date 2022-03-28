@@ -10,19 +10,23 @@
         <item name="colorSecondaryVariant">@color/tertiary</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="Theme.Emotive.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="Theme.Emotive.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="Theme.Emotive.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    <style name="Theme.Emotive.Fullscreen" parent="Theme.Emotive.NoActionBar">
+<!--    <style name="Theme.Emotive.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
+<!--    <style name="Theme.Emotive.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
+    <style name="Theme.Emotive.Fullscreen" parent="Theme.Emotive">
+        <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@null</item>
+        <item name="windowActionBar">false</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
     </style>
 
     <style name="ThemeOverlay.Emotive.FullscreenContainer" parent="">

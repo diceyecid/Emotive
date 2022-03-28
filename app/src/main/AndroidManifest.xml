@@ -22,7 +22,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:fitsSystemWindows="true"
             android:theme="@style/Theme.Emotive.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,26 +33,22 @@
             android:name=".ShopActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:fitsSystemWindows="true"
             android:theme="@style/Theme.Emotive.Fullscreen" />
         <activity
             android:name=".MoodDataActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:fitsSystemWindows="true"
             android:label="@string/title_activity_mood_data"
             android:theme="@style/Theme.Emotive.Fullscreen" />
         <activity
             android:name=".TextEntryActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:fitsSystemWindows="true"
             android:theme="@style/Theme.Emotive.Fullscreen" />
         <activity
             android:name=".MoodReportActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:fitsSystemWindows="true"
             android:theme="@style/Theme.Emotive.Fullscreen" />
     </application>
 

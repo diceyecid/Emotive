@@ -23,6 +23,7 @@ class MoodDataActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mood_data)
+        Utils.hideSystemBars( window )
 
         // initialize views
         backButton.setOnClickListener{ goBack() }
