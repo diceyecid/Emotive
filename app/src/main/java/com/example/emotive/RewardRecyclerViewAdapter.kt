@@ -41,8 +41,4 @@ class RewardRecyclerViewAdapter(
     }
 
     override fun getItemCount() = rewardList.size
-
-    // navigate to text entry to edit Reward
-    private fun claimReward(view: View, Reward: Reward) {
-    }
 }

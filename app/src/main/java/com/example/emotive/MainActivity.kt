@@ -114,26 +114,8 @@ class MainActivity : AppCompatActivity() {
                 customdialog.rewardRecyclerView.layoutManager = LinearLayoutManager( this )
                 customdialog.rewardRecyclerView.adapter = RewardRecyclerViewAdapter( it, rewardViewModel )
             } )
-
-            /*
-            customdialog.textView1.setOnClickListener{
-                customdialog.dismiss()
-            }
-            */
-
-            //OLD
-            /*
-            val customdialog = Dialog(this )
-            customdialog.setContentView(R.layout.activity_reward_gain)
-            customdialog.show()
-
-             */
         }
-
-
-
     }
-
 }
 
 
