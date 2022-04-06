@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.alert_reward_gain.*
 import java.io.IOException
 import java.io.InputStream
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -70,9 +71,12 @@ class MainActivity : AppCompatActivity() {
             petalText.text = it.toString()
         }
 
-        val handler = Handler()
 
-        var petalCount = 0
+
+        /********** Mini Interactivity **********/
+
+
+
         val inactiveImageArr = arrayListOf(
             imageView3,
             imageView4,
@@ -82,39 +86,51 @@ class MainActivity : AppCompatActivity() {
         )
         val activeImageArr = arrayListOf<ImageView>()
 
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                //Call your function here
-                println(inactiveImageArr)
-                if(inactiveImageArr.size > 0) {
-                    val displayMetrics = DisplayMetrics()
-                    windowManager.defaultDisplay.getMetrics(displayMetrics)
-                    val height = displayMetrics.heightPixels
-                    val width = displayMetrics.widthPixels
+        val period = 3600000    // an hour in milliseconds
 
-                    val randomX  = (0 until width - 10).random()
-                    val randomY = ((height/1.5).toInt() until height - 10).random()
-                    val targetImageView = inactiveImageArr[0]
-                    targetImageView.setImageResource(R.drawable.petal)
+        // calculate how many petal should be generated for the inactive time
+        while( Calendar.getInstance().timeInMillis - userData.lastIntensive > period )
+        {
+            if( userData.uncollected >= inactiveImageArr.size )
+            {
+                userData.lastIntensive = Calendar.getInstance().timeInMillis
+            }
+            else
+            {
+                userData.lastIntensive += period
+                userData.uncollected++
+            }
+        }
 
-                    targetImageView.setRotation((0 until 360).random().toFloat())
-                    targetImageView.setX(randomX.toFloat())
-                    targetImageView.setY(randomY.toFloat())
+        // generate petals on screen
+        for( i in 0 until userData.uncollected )
+        {
+            if( inactiveImageArr.size > 0 )
+            {
+                val targetImageView = inactiveImageArr[0]
+                targetImageView.setImageResource(R.drawable.petal)
 
-                    activeImageArr.add(targetImageView)
-                    inactiveImageArr.removeAt(0)
-                    targetImageView.setOnClickListener{
-                        targetImageView.setImageResource(R.drawable.imageempty)
-                        inactiveImageArr.add(targetImageView)
-                        val targetIndex = activeImageArr.indexOf(targetImageView)
+                activeImageArr.add(targetImageView)
+                inactiveImageArr.removeAt(0)
+                targetImageView.setOnClickListener {
+                    targetImageView.setImageResource(R.drawable.imageempty)
+                    inactiveImageArr.add(targetImageView)
+                    val targetIndex = activeImageArr.indexOf(targetImageView)
+                    if (targetIndex >= 0)
+                    {
                         activeImageArr.removeAt(targetIndex)
                         userData.addPetals((1 until 5).random())
+                        userData.uncollected--
                     }
-                    petalCount += 1
                 }
-                handler.postDelayed(this, 2000)//1 sec delay
             }
-        }, 2000)
+        }
+
+
+
+        /********** navigation buttons ***********/
+
+
 
         // navigates to mood report
         triggerImage.setOnClickListener {
@@ -142,13 +158,6 @@ class MainActivity : AppCompatActivity() {
 
         // navigates to the reward pop up window
         userImage.setOnClickListener {
-            /*
-
-            val mDialogView = LayoutInflater.from(this).inflate(R.layout.alert_reward_gain, null);
-            val mBuilder = AlertDialog.Builder(this)
-                .setView(mDialogView)
-            val mAlertDialog = mBuilder.show()
-            */
             val customdialog = Dialog(this )
             customdialog.setContentView(R.layout.alert_reward_gain)
             customdialog.show()
@@ -163,20 +172,6 @@ class MainActivity : AppCompatActivity() {
                 customdialog.rewardRecyclerView.layoutManager = LinearLayoutManager( this )
                 customdialog.rewardRecyclerView.adapter = RewardRecyclerViewAdapter( it, rewardViewModel )
             } )
-
-            /*
-            customdialog.textView1.setOnClickListener{
-                customdialog.dismiss()
-            }
-            */
-
-            //OLD
-            /*
-            val customdialog = Dialog(this )
-            customdialog.setContentView(R.layout.activity_reward_gain)
-            customdialog.show()
-
-             */
         }
 
 

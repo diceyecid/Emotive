@@ -16,6 +16,8 @@ private const val BACKGROUND : String = "background"
 private const val AVATAR : String = "avatar"
 private const val DECORATION : String = "decoration"
 private const val UNLOCKED_ITEMS : String = "unlockItems"
+private const val LAST_INCENTIVE : String = "last incentive"
+private const val UNCOLLECTED : String = "uncollected"
 
 // Call UserData.getInstance( context ) to get an instance
 class UserData private constructor( app : Context )
@@ -65,6 +67,26 @@ class UserData private constructor( app : Context )
             field = items
             writeToSharePref( UNLOCKED_ITEMS, field )
         }
+    var lastIntensive : Long = sharedPref.getLong( LAST_INCENTIVE, 0 )
+        set( time )
+        {
+            field = time
+            with( sharedPref.edit() )
+            {
+                putLong( LAST_INCENTIVE, time )
+                apply()
+            }
+        }
+    var uncollected : Int = sharedPref.getInt( UNCOLLECTED, 0 )
+        set( amount )
+        {
+            field = amount
+            with( sharedPref.edit() )
+            {
+                putInt( UNCOLLECTED, field )
+                apply()
+            }
+        }
 
 
     /********** live data **********/
@@ -106,6 +128,14 @@ class UserData private constructor( app : Context )
     {
         unlockedItems.clear()
         writeToSharePref( UNLOCKED_ITEMS, unlockedItems )
+    }
+
+    // get last instance in calendar
+    fun getLastInstanceInCal() : Calendar
+    {
+        val cal = Calendar.getInstance()
+        cal.timeInMillis = lastIntensive
+        return cal
     }
 
 
